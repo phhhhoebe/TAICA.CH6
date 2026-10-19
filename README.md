@@ -1,0 +1,2 @@
+# TAICA.CH6
+TAICA 課程作業
