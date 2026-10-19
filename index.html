@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/industry-14348355-6756-4e10-813c-400252184e60/styles.css">
+<script src="_ds/industry-14348355-6756-4e10-813c-400252184e60/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+body{margin:0;background:var(--color-bg);font-family:"Barlow","Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,.btn,.card-title,.dialog-title{font-family:"Barlow Condensed","Noto Sans TC",system-ui,sans-serif}
+a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-800)}
+button{font:inherit;color:inherit}
+.btn{min-height:44px;transition:transform 80ms}
+.btn:active:not(:disabled),button:active:not(:disabled){transform:scale(.97)}
+@keyframes hyIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes hyFade{from{opacity:0}to{opacity:1}}
+@keyframes hyUp{from{transform:translateY(100%)}to{transform:none}}
+@keyframes hyPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--color-accent) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes hyBump{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(1)}}
+@keyframes hyDraw{to{stroke-dashoffset:0}}
+@keyframes hySpin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-size:15px">
+<div style="max-width:480px;margin:0 auto;min-height:100vh;position:relative;border-left:1px solid var(--color-divider);border-right:1px solid var(--color-divider);padding-bottom:{{ padBottom }};overflow-x:clip">
+
+<header style="position:sticky;top:0;z-index:30;background:var(--color-bg);border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:6px;padding:0 6px 0 16px;height:56px">
+  <sc-if value="{{ isPushed }}" hint-placeholder-val="{{ false }}">
+    <button class="btn btn-ghost" onClick="{{ goBack }}" aria-label="返回" style="min-width:44px;padding:0;margin-left:-12px;color:var(--color-text)">{{ ic.back }}</button>
+    <div style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-weight:600;font-size:19px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pageTitle }}</div>
+  </sc-if>
+  <sc-if value="{{ notPushed }}" hint-placeholder-val="{{ true }}">
+    <a href="#/" style="display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--color-text);flex:1;min-width:0">
+      <span style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em">日和代購</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.28em;color:var(--color-accent-700)">HIYORI</span>
+    </a>
+  </sc-if>
+  <span class="tag tag-accent" style="font-variant-numeric:tabular-nums;white-space:nowrap;font-size:11px;padding:3px 8px">{{ rateLabel }}</span>
+  <a href="#/cart" aria-label="購物車" class="btn btn-ghost" style="position:relative;min-width:44px;padding:0;color:var(--color-text)">{{ ic.cart }}{{ cartBadge }}</a>
+</header>
+
+<sc-if value="{{ r.home }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="逛商品" style="animation:hyIn 200ms ease-out;display:flex;flex-direction:column;gap:20px;padding:16px">
+  <sc-if value="{{ hasReminders }}">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ reminders }}" as="rm" hint-placeholder-count="1">
+        <a href="{{ rm.href }}" style="display:flex;align-items:center;gap:10px;padding:0 14px;min-height:48px;background:var(--color-accent-900);color:var(--color-bg);text-decoration:none">{{ rm.icon }}<span style="flex:1;font-size:14px;font-weight:500">{{ rm.text }}</span>{{ ic.arrow16 }}</a>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <section class="blueprint" style="background:var(--color-accent-900);color:var(--color-bg);padding:20px;display:flex;flex-direction:column;gap:10px">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;color:var(--color-accent-300)"><span>本期主打 · TOKYO DRUGSTORE</span><span>NO.11</span></div>
+    <h1 style="margin:0;font-size:36px;line-height:1.08">11 月東京藥妝團</h1>
+    <p style="margin:0;font-size:14px;color:var(--color-accent-200)">人氣化妝水、保養品一次帶回，同團商品合併寄送更省運費。</p>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid color-mix(in srgb,var(--color-bg) 25%,transparent);padding-top:12px;margin-top:4px">
+      <div>
+        <div style="font-size:12px;color:var(--color-accent-300);letter-spacing:.08em">距離截團還剩</div>
+        <div style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1">{{ bannerCd }}</div>
+      </div>
+      <button class="btn" onClick="{{ bannerGo }}" style="background:var(--color-bg);color:var(--color-accent-900);border-color:var(--color-bg)">逛這一團 {{ ic.arrow16 }}</button>
+    </div>
+  </section>
+
+  <div style="display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:2px 16px;scrollbar-width:none">
+    <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+      <button onClick="{{ c.on }}" aria-pressed="{{ c.pressed }}" style="flex:none;min-height:44px;padding:0 14px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:14px;cursor:pointer;white-space:nowrap">{{ c.label }}</button>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+    <span style="font-size:13px;color:var(--color-neutral-700)">{{ productCount }}</span>
+    <div class="seg" role="radiogroup" aria-label="排序">
+      <sc-for list="{{ sorts }}" as="so" hint-placeholder-count="3">
+        <label class="seg-opt" style="min-height:40px"><input type="radio" name="sort" checked="{{ so.checked }}" onChange="{{ so.on }}">{{ so.label }}</label>
+      </sc-for>
+    </div>
+  </div>
+
+  <sc-if value="{{ hasProducts }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px">
+      <sc-for list="{{ productCards }}" as="p" hint-placeholder-count="6">
+        <a href="{{ p.href }}" class="blueprint" style="display:flex;flex-direction:column;text-decoration:none;color:inherit">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="position:relative;aspect-ratio:1;background-color:var(--color-surface);background-image:repeating-linear-gradient(135deg,transparent 0 9px,color-mix(in srgb,var(--color-text) 6%,transparent) 9px 10px);display:grid;place-items:center;color:var(--color-accent);border-bottom:1px solid var(--color-divider);filter:{{ p.filter }};opacity:{{ p.op }}">
+            {{ p.icon }}
+            <span style="position:absolute;left:8px;bottom:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.14em;color:var(--color-neutral-700)">{{ p.fig }}</span>
+            <sc-if value="{{ p.hasTag }}"><span class="tag" style="position:absolute;top:8px;left:8px;background:{{ p.tagBg }};color:{{ p.tagFg }};border:1px solid {{ p.tagBd }}">{{ p.tag }}</span></sc-if>
+          </div>
+          <div style="padding:10px;display:flex;flex-direction:column;gap:4px;flex:1;opacity:{{ p.op }}">
+            <div style="font-size:14px;line-height:1.4;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em">{{ p.name }}</div>
+            <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;font-variant-numeric:tabular-nums"><span style="font-family:'Barlow Condensed',sans-serif;font-size:23px;font-weight:600;line-height:1.1">{{ p.yen }}</span><span style="font-size:12px;color:var(--color-neutral-700)">約 {{ p.nt }}</span></div>
+            <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:{{ p.dlColor }};font-weight:{{ p.dlWeight }};margin-top:auto;font-variant-numeric:tabular-nums">{{ ic.clock16 }}{{ p.dl }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ noProducts }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:36px 16px;text-align:center;border:1px dashed var(--color-divider)">
+      <span style="color:var(--color-accent)">{{ ic.search }}</span>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-800);text-wrap:pretty">這個分類目前沒有開團，要不要直接委託報價？</p>
+      <a href="#/quote" class="btn btn-secondary">前往委託報價</a>
+    </div>
+  </sc-if>
+
+  <a href="#/quote" class="card blueprint" style="flex-direction:row;align-items:center;gap:14px;padding:16px;text-decoration:none;color:inherit;min-height:64px">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <span style="color:var(--color-accent)">{{ ic.camera }}</span>
+    <div style="flex:1;min-width:0"><div class="card-title">找不到想要的？</div><div style="font-size:13px;color:var(--color-neutral-700)">上傳圖片請我們報價，通常 24 小時內回覆</div></div>
+    {{ ic.arrow }}
+  </a>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.product }}">
+<div data-screen-label="商品詳情" style="animation:hyIn 200ms ease-out">
+  <sc-if value="{{ pd.ok }}">
+    <div style="position:relative;border-bottom:1px solid var(--color-divider)">
+      <div onScroll="{{ pd.onScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none">
+        <sc-for list="{{ pd.slides }}" as="sl" hint-placeholder-count="1">
+          <div role="img" aria-label="{{ sl.alt }}" style="flex:0 0 100%;aspect-ratio:1;max-height:420px;scroll-snap-align:start;display:grid;place-items:center;background-color:var(--color-surface);background-image:repeating-linear-gradient({{ sl.angle }},transparent 0 11px,color-mix(in srgb,var(--color-text) 6%,transparent) 11px 12px);color:var(--color-accent);position:relative;filter:{{ pd.filter }}">
+            {{ sl.icon }}
+            <span style="position:absolute;left:14px;bottom:12px;font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:12px;letter-spacing:.14em;color:var(--color-neutral-700)">{{ sl.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px;pointer-events:none">
+        <sc-for list="{{ pd.dots }}" as="d" hint-placeholder-count="3"><span style="width:{{ d.w }};height:6px;background:{{ d.bg }};transition:width 200ms"></span></sc-for>
+      </div>
+    </div>
+
+    <div style="padding:16px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:13px;letter-spacing:.12em;color:var(--color-accent-700)">{{ pd.brand }} · {{ pd.category }}</div>
+        <h2 style="margin:0;font-size:26px;line-height:1.2;text-wrap:pretty">{{ pd.name }}</h2>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-variant-numeric:tabular-nums">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:600;line-height:1">{{ pd.yen }}</span>
+          <span style="font-size:14px;color:var(--color-neutral-700)">約 {{ pd.nt }}</span>
+          <button onClick="{{ pd.toggleRate }}" aria-label="匯率與計算方式" aria-expanded="{{ pd.rateExp }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;color:var(--color-accent-700);cursor:pointer;margin-left:-8px">{{ ic.info }}</button>
+        </div>
+        <sc-if value="{{ pd.rateOpen }}">
+          <div style="padding:12px 14px;background:var(--color-accent-100);color:var(--color-accent-900);font-size:13px;line-height:1.6;animation:hyIn 160ms ease-out">{{ pd.rateText }}</div>
+        </sc-if>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--color-divider)">
+        <div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px">
+          <span style="font-size:11px;color:var(--color-neutral-700);letter-spacing:.06em">{{ pd.cdLabel }}</span>
+          <span style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{ pd.cdColor }}">{{ pd.cd }}</span>
+        </div>
+        <div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--color-divider)">
+          <span style="font-size:11px;color:var(--color-neutral-700);letter-spacing:.06em">每人限購</span>
+          <span style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:18px;font-weight:600">{{ pd.limit }}</span>
+        </div>
+        <div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--color-divider)">
+          <span style="font-size:11px;color:var(--color-neutral-700);letter-spacing:.06em">剩餘名額</span>
+          <span style="font-family:'Barlow Condensed','Noto Sans TC',sans-serif;font-size:18px;font-weight:600">{{ pd.stock }}</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ pd.hasNote }}">
+        <div style="display:flex;gap:10px;padding:12px 14px;border:1px solid var(--color-text);font-size:13px;line-height:1.55">{{ ic.alert }}<span>{{ pd.note }}</span></div>
+      </sc-if>
+
+      <sc-for list="{{ pd.groups }}" as="g" hint-placeholder-count="1">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:500"><span>{{ g.label }}</span><span style="font-size:12px;color:var(--color-neutral-700);font-weight:400">{{ g.hint }}</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ g.opts }}" as="o" hint-placeholder-count="2">
+              <button onClick="{{ o.on }}" aria-pressed="{{ o.pressed }}" style="min-height:44px;min-width:56px;padding:0 14px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font-size:14px;cursor:pointer;display:flex;align-items:center;gap:6px">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:500">數量</span><span style="font-size:12px;color:var(--color-neutral-700)">{{ pd.limitNote }}</span></div>
+        <div style="display:inline-flex;border:1px solid var(--color-divider)">
+          <button aria-label="減少數量" onClick="{{ pd.step.dec }}" disabled="{{ pd.step.decDis }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ pd.step.decOp }}">{{ ic.minus }}</button>
+          <span style="min-width:44px;display:grid;place-items:center;border-left:1px solid var(--color-divider);border-right:1px solid var(--color-divider);font-variant-numeric:tabular-nums;font-weight:500">{{ pd.step.qty }}</span>
+          <button aria-label="增加數量" onClick="{{ pd.step.inc }}" disabled="{{ pd.step.incDis }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ pd.step.incOp }}">{{ ic.plus }}</button>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--color-divider);padding-top:14px;display:flex;flex-direction:column;gap:8px">
+        <h4 style="margin:0;font-size:18px">商品說明</h4>
+        <p style="margin:0;font-size:14px;line-height:1.7;color:var(--color-neutral-800);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:{{ pd.clamp }};overflow:hidden;text-wrap:pretty">{{ pd.desc }}</p>
+        <button class="btn btn-ghost" onClick="{{ pd.toggleDesc }}" style="align-self:flex-start;gap:4px">{{ pd.descLabel }}</button>
+      </div>
+    </div>
+
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;justify-content:center;pointer-events:none">
+      <div style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-divider);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px">
+        <div style="flex:1;min-width:0;font-variant-numeric:tabular-nums">
+          <div style="font-size:12px;color:var(--color-neutral-700)">小計 · {{ pd.subJP }}</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:600;line-height:1.1">{{ pd.subtotal }}</div>
+        </div>
+        <button class="btn btn-primary blueprint" onClick="{{ pd.add }}" disabled="{{ pd.disabled }}" style="min-height:48px;padding:0 22px;font-size:16px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>{{ pd.btnLabel }}
+        </button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ pd.missing }}"><div style="padding:48px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px"><p style="margin:0">找不到這件商品</p><a href="#/" class="btn btn-secondary">回到商品列表</a></div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.cart }}">
+<div data-screen-label="購物車" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:16px">
+  <sc-if value="{{ cart.empty }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:64px 16px;text-align:center">
+      <span style="color:var(--color-accent)">{{ ic.cart }}</span>
+      <h3 style="margin:0;font-size:22px">購物車空空的</h3>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-700)">看看這期開團有什麼好東西吧</p>
+      <a href="#/" class="btn btn-primary blueprint" style="padding:0 24px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>去逛逛</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ cart.has }}">
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider)">
+      <sc-for list="{{ cart.lines }}" as="l" hint-placeholder-count="2">
+        <div style="display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--color-divider)">
+          <a href="{{ l.href }}" aria-label="{{ l.name }}" style="width:76px;height:76px;display:grid;place-items:center;background-color:var(--color-surface);background-image:repeating-linear-gradient(135deg,transparent 0 7px,color-mix(in srgb,var(--color-text) 6%,transparent) 7px 8px);color:var(--color-accent);border:1px solid var(--color-divider);filter:{{ l.filter }}">{{ l.icon }}</a>
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:0;opacity:{{ l.op }}">
+            <div style="display:flex;gap:8px;align-items:flex-start">
+              <div style="flex:1;min-width:0">
+                <div style="font-size:14px;font-weight:500;line-height:1.35">{{ l.name }}</div>
+                <sc-if value="{{ l.hasVariant }}"><div style="font-size:12px;color:var(--color-neutral-700)">{{ l.variant }}</div></sc-if>
+              </div>
+              <button onClick="{{ l.remove }}" aria-label="刪除商品" style="width:44px;height:44px;margin:-10px -10px 0 0;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;color:var(--color-neutral-700)">{{ ic.trash }}</button>
+            </div>
+            <sc-if value="{{ l.closed }}"><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}已截團，將不會結帳</div></sc-if>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+              <div style="display:inline-flex;border:1px solid var(--color-divider)">
+                <button aria-label="減少數量" onClick="{{ l.step.dec }}" disabled="{{ l.step.decDis }}" style="width:40px;height:40px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ l.step.decOp }}">{{ ic.minus16 }}</button>
+                <span style="min-width:36px;display:grid;place-items:center;border-left:1px solid var(--color-divider);border-right:1px solid var(--color-divider);font-variant-numeric:tabular-nums">{{ l.step.qty }}</span>
+                <button aria-label="增加數量" onClick="{{ l.step.inc }}" disabled="{{ l.step.incDis }}" style="width:40px;height:40px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ l.step.incOp }}">{{ ic.plus16 }}</button>
+              </div>
+              <div style="text-align:right;font-variant-numeric:tabular-nums"><div style="font-weight:700">{{ l.sub }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ l.unit }}</div></div>
+            </div>
+            <sc-if value="{{ l.atLimit }}"><div style="font-size:12px;color:var(--color-neutral-700)">{{ l.limitNote }}</div></sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div class="blueprint" style="padding:16px;display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span>商品小計</span><span>{{ cart.sum.sub }}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span>代購費（10%，最低 NT$50）</span><span>{{ cart.sum.fee }}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span>日本國內運費</span><span>{{ cart.sum.jp }}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--color-divider);padding-top:10px;margin-top:2px"><span style="font-weight:700">一補合計</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:600">{{ cart.sum.total }}</span></div>
+      <div style="font-size:13px;color:var(--color-neutral-700)">二補預估 {{ cart.sum.est2 }}（抵台秤重後收取）</div>
+    </div>
+
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;justify-content:center;pointer-events:none">
+      <div style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-divider);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px">
+        <div style="flex:1;font-variant-numeric:tabular-nums"><div style="font-size:12px;color:var(--color-neutral-700)">一補 · 今日付款</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:600;line-height:1.1">{{ cart.sum.total }}</div></div>
+        <button class="btn btn-primary blueprint" onClick="{{ cart.checkout }}" disabled="{{ cart.noOpen }}" style="min-height:48px;padding:0 22px;font-size:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>前往結帳 {{ ic.arrow16 }}</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.checkout }}">
+<div data-screen-label="結帳" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:28px">
+  <sc-if value="{{ co.empty }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:48px 16px;text-align:center"><p style="margin:0">沒有可結帳的商品</p><a href="#/" class="btn btn-secondary">去逛逛</a></div>
+  </sc-if>
+  <sc-if value="{{ co.ok }}">
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--color-accent-700);letter-spacing:.12em">01</span><h3 style="margin:0;font-size:21px">收件資訊</h3></div>
+      <div class="field" id="co-name"><label for="co_name">姓名 *</label><input id="co_name" class="input" style="min-height:44px;border-color:{{ co.bd.name }}" value="{{ co.v.name }}" onChange="{{ co.on.name }}" placeholder="收件人真實姓名"><sc-if value="{{ co.err.name }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.name }}</div></sc-if></div>
+      <div class="field" id="co-phone"><label for="co_phone">手機 *</label><input id="co_phone" type="tel" class="input" style="min-height:44px;border-color:{{ co.bd.phone }}" value="{{ co.v.phone }}" onChange="{{ co.on.phone }}" placeholder="0912-345-678"><sc-if value="{{ co.err.phone }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.phone }}</div></sc-if></div>
+      <div class="field" id="co-email"><label for="co_email">Email *</label><input id="co_email" type="email" class="input" style="min-height:44px;border-color:{{ co.bd.email }}" value="{{ co.v.email }}" onChange="{{ co.on.email }}" placeholder="name@example.com"><sc-if value="{{ co.err.email }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.email }}</div></sc-if></div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--color-accent-700);letter-spacing:.12em">02</span><h3 style="margin:0;font-size:21px">台灣取貨方式</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px" role="radiogroup" aria-label="取貨方式">
+        <sc-for list="{{ co.methods }}" as="m" hint-placeholder-count="2">
+          <button role="radio" aria-checked="{{ m.pressed }}" onClick="{{ m.on }}" style="text-align:left;padding:12px;min-height:76px;border:{{ m.bw }} solid {{ m.bd }};background:{{ m.bg }};cursor:pointer;display:flex;flex-direction:column;gap:6px;position:relative">
+            <span style="display:flex;align-items:center;gap:8px;font-weight:500">{{ m.icon }}{{ m.label }}</span>
+            <span style="font-size:13px;color:var(--color-neutral-700);font-variant-numeric:tabular-nums">運費 {{ m.fee }}，併入二補</span>
+            <sc-if value="{{ m.sel }}"><span style="position:absolute;top:10px;right:10px;color:var(--color-accent-700)">{{ ic.check16 }}</span></sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ co.isCvs }}"><div class="field" id="co-store"><label for="co_store">取貨門市 *</label><input id="co_store" class="input" style="min-height:44px;border-color:{{ co.bd.store }}" value="{{ co.v.store }}" onChange="{{ co.on.store }}" placeholder="例：7-ELEVEN 台北府前門市"><sc-if value="{{ co.err.store }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.store }}</div></sc-if></div></sc-if>
+      <sc-if value="{{ co.isHome }}"><div class="field" id="co-address"><label for="co_address">收件地址 *</label><input id="co_address" class="input" style="min-height:44px;border-color:{{ co.bd.address }}" value="{{ co.v.address }}" onChange="{{ co.on.address }}" placeholder="縣市、區、路段、門牌"><sc-if value="{{ co.err.address }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.address }}</div></sc-if></div></sc-if>
+    </section>
+
+    <section id="co-oos" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--color-accent-700);letter-spacing:.12em">03</span><h3 style="margin:0;font-size:21px">缺貨時怎麼處理 *</h3></div>
+      <div style="display:flex;flex-direction:column;border:1px solid {{ co.bd.oos }}">
+        <sc-for list="{{ co.oosOpts }}" as="o" hint-placeholder-count="3">
+          <label class="radio" style="align-items:flex-start;padding:12px 14px;min-height:56px;border-bottom:1px solid var(--color-divider);background:{{ o.bg }}"><input type="radio" name="oos" checked="{{ o.checked }}" onChange="{{ o.on }}"><span class="dot" style="margin-top:3px"></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:500">{{ o.label }}</span><span style="font-size:12px;color:var(--color-neutral-700)">{{ o.desc }}</span></span></label>
+        </sc-for>
+      </div>
+      <sc-if value="{{ co.err.oos }}"><div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.oos }}</div></sc-if>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--color-accent-700);letter-spacing:.12em">04</span><h3 style="margin:0;font-size:21px">聯絡方式</h3></div>
+      <div class="field"><label for="co_line">LINE ID（選填）</label><input id="co_line" class="input" style="min-height:44px" value="{{ co.v.line }}" onChange="{{ co.on.line }}" placeholder="方便代購者聯繫你"></div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--color-accent-700);letter-spacing:.12em">05</span><h3 style="margin:0;font-size:21px">費用明細</h3></div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em">
+        <span style="display:flex;align-items:center;gap:6px;font-weight:700"><span style="width:10px;height:10px;background:var(--color-accent)"></span>現在付</span>
+        <span style="height:1px;background-image:repeating-linear-gradient(90deg,var(--color-neutral-500) 0 4px,transparent 4px 8px)"></span>
+        <span style="display:flex;align-items:center;gap:6px;color:var(--color-neutral-700)"><span style="width:10px;height:10px;border:1.5px solid var(--color-neutral-600)"></span>抵台後付</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-variant-numeric:tabular-nums">
+        <div class="blueprint" style="padding:14px;display:flex;flex-direction:column;gap:6px;border-color:var(--color-accent)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-size:12px;letter-spacing:.08em;color:var(--color-accent-700);font-weight:700">一補 · 今日付款</div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>商品</span><span>{{ co.fee.sub }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>代購費</span><span>{{ co.fee.fee }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>日本運費</span><span>{{ co.fee.jp }}</span></div>
+          <div style="border-top:1px solid var(--color-divider);padding-top:6px;margin-top:auto;font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:600;line-height:1.1">{{ co.fee.total }}</div>
+        </div>
+        <div class="blueprint" style="padding:14px;display:flex;flex-direction:column;gap:6px;border-style:dashed">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-size:12px;letter-spacing:.08em;color:var(--color-neutral-700);font-weight:700">二補 · 抵台後付（預估）</div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;gap:6px"><span>國際運費 {{ co.fee.kg }}</span><span>{{ co.fee.intl }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>台灣運費</span><span>{{ co.fee.tw }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span>關稅</span><span>{{ co.fee.tax }}</span></div>
+          <div style="border-top:1px solid var(--color-divider);padding-top:6px;margin-top:auto;font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:600;line-height:1.1;color:var(--color-neutral-800)">≈ {{ co.fee.est2 }}</div>
+          <div style="font-size:11px;color:var(--color-neutral-700)">實際金額以抵台秤重為準</div>
+        </div>
+      </div>
+      <sc-if value="{{ co.fee.hasTax }}"><div style="display:flex;gap:8px;font-size:13px;padding:10px 12px;border:1px solid var(--color-text)">{{ ic.alert16 }}商品金額超過 NT$2,000 免稅門檻，可能需繳關稅，將併入二補收取。</div></sc-if>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-variant-numeric:tabular-nums"><span>預估總計（一補＋二補）</span><span style="font-weight:700">{{ co.fee.grand }}</span></div>
+    </section>
+
+    <section id="co-agree" style="display:flex;flex-direction:column;gap:6px">
+      <label style="display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;font-size:14px">
+        <input type="checkbox" checked="{{ co.v.agree }}" onChange="{{ co.toggleAgree }}" style="width:20px;height:20px;accent-color:var(--color-accent);margin:0">
+        <span>我已閱讀<button onClick="{{ co.openTerms }}" style="background:transparent;border:0;padding:0 2px;color:var(--color-accent-700);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:14px">代購須知</button>並同意相關規範</span>
+      </label>
+      <sc-if value="{{ co.err.agree }}"><div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ co.err.agree }}</div></sc-if>
+    </section>
+
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;justify-content:center;pointer-events:none">
+      <div style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-divider);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px">
+        <div style="flex:1;font-variant-numeric:tabular-nums;min-width:0"><div style="font-size:12px;color:var(--color-neutral-700)">今日應付（一補）</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:600;line-height:1.1">{{ co.fee.total }}</div></div>
+        <button class="btn btn-primary blueprint" onClick="{{ co.submit }}" disabled="{{ co.submitting }}" style="min-height:48px;padding:0 18px;font-size:16px;gap:8px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><sc-if value="{{ co.submitting }}">{{ spinner }}</sc-if>確認下單，前往付款</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.success }}">
+<div data-screen-label="下單成功" style="animation:hyIn 200ms ease-out;padding:40px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+  <sc-if value="{{ sc.ok }}">
+    {{ checkAnim }}
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+      <h1 style="margin:0;font-size:34px">下單成功</h1>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-700)">請於 24 小時內完成一補轉帳，代購者確認收款後即開始購買</p>
+    </div>
+    <div class="blueprint" style="width:100%;padding:16px;display:flex;flex-direction:column;gap:10px;text-align:left;font-variant-numeric:tabular-nums">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span style="color:var(--color-neutral-700)">訂單編號</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;letter-spacing:.06em">{{ sc.id }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-size:14px"><span style="color:var(--color-neutral-700)">一補金額</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:600">{{ sc.amount }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><span style="color:var(--color-neutral-700)">二補預估（抵台後）</span><span>{{ sc.est2 }}</span></div>
+      <div style="border-top:1px solid var(--color-divider);padding-top:10px;display:flex;flex-direction:column;gap:6px;font-size:13px">
+        <div style="font-size:12px;letter-spacing:.08em;color:var(--color-accent-700);font-weight:700">轉帳資訊（示意）</div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">銀行代碼</span><span>{{ bank.code }}</span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">帳號</span><span style="letter-spacing:.04em">{{ bank.account }}</span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">戶名</span><span>{{ bank.holder }}</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%">
+      <a href="#/" class="btn btn-secondary" style="min-height:48px">繼續逛逛</a>
+      <a href="{{ sc.href }}" class="btn btn-primary blueprint" style="min-height:48px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>查看訂單</a>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.quote }}">
+<div data-screen-label="委託報價" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:18px">
+  <div role="tablist" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider)">
+    <sc-for list="{{ qTabs }}" as="t" hint-placeholder-count="2">
+      <button role="tab" aria-selected="{{ t.pressed }}" onClick="{{ t.on }}" style="min-height:44px;border:0;background:{{ t.bg }};color:{{ t.fg }};font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">{{ t.label }}<sc-if value="{{ t.hasBadge }}"><span style="min-width:18px;height:18px;padding:0 5px;display:grid;place-items:center;font-size:11px;font-weight:700;background:{{ t.badgeBg }};color:{{ t.badgeFg }}">{{ t.badge }}</span></sc-if></button>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ q.showDone }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 8px;text-align:center">
+      {{ checkAnim }}
+      <h2 style="margin:0;font-size:28px">已收到你的委託！</h2>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-700)">通常 24 小時內回覆報價，報價後會在「我的報價」與首頁提醒你。</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%">
+        <button class="btn btn-secondary" onClick="{{ q.again }}" style="min-height:48px">再委託一件</button>
+        <button class="btn btn-primary blueprint" onClick="{{ q.viewList }}" style="min-height:48px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>查看我的報價</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ q.showForm }}">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-size:26px">想買什麼，告訴我們</h2>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-700)">一次給齊資訊，報價更快更準。表單內容會自動保留為草稿。</p>
+    </div>
+
+    <div id="q-images" class="field">
+      <label>商品圖片 *（最多 5 張，單張 5MB 以內，第一張為封面）</label>
+      <div onClick="{{ q.pick }}" onDragOver="{{ q.dragOver }}" onDragLeave="{{ q.dragLeave }}" onDrop="{{ q.drop }}" role="button" aria-label="上傳商品圖片" style="min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;border:1.5px dashed {{ q.dropBd }};background:{{ q.dropBg }};cursor:pointer;text-align:center;transition:background 150ms">
+        <span style="color:var(--color-accent)">{{ ic.imgPlus }}</span>
+        <span style="font-size:14px;font-weight:500">{{ q.dropText }}</span>
+        <span style="font-size:12px;color:var(--color-neutral-700)">{{ q.imgCount }}</span>
+      </div>
+      <input type="file" accept="image/*" multiple="{{ true }}" ref="{{ fileRef }}" onChange="{{ q.onFile }}" style="display:none">
+      <sc-if value="{{ q.hasThumbs }}">
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px">
+          <sc-for list="{{ q.thumbs }}" as="th" hint-placeholder-count="0">
+            <div style="position:relative;aspect-ratio:1;border:1px solid var(--color-divider)">
+              <img src="{{ th.src }}" alt="{{ th.alt }}" style="width:100%;height:100%;object-fit:cover">
+              <sc-if value="{{ th.cover }}"><span style="position:absolute;left:0;bottom:0;padding:1px 5px;font-size:10px;background:var(--color-accent-900);color:var(--color-bg)">封面</span></sc-if>
+              <button onClick="{{ th.rm }}" aria-label="刪除圖片" style="position:absolute;top:-10px;right:-10px;width:28px;height:28px;display:grid;place-items:center;background:var(--color-text);color:var(--color-bg);border:0;cursor:pointer">{{ ic.x16 }}</button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ q.imgErr }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.imgErr }}</div></sc-if>
+      <sc-if value="{{ q.err.images }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.err.images }}</div></sc-if>
+    </div>
+
+    <div class="field"><label for="q_url">商品連結（選填）</label><input id="q_url" type="url" class="input" style="min-height:44px" value="{{ q.v.url }}" onChange="{{ q.on.url }}" placeholder="貼上官網、樂天、Amazon JP 連結，報價更快更準"></div>
+    <div class="field" id="q-name"><label for="q_name">商品名稱／品牌 *</label><input id="q_name" class="input" style="min-height:44px;border-color:{{ q.bd.name }}" value="{{ q.v.name }}" onChange="{{ q.on.name }}" placeholder="不知道名稱也可以寫描述"><sc-if value="{{ q.err.name }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.err.name }}</div></sc-if></div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end">
+      <div class="field"><label for="q_spec">規格（選填）</label><input id="q_spec" class="input" style="min-height:44px" value="{{ q.v.spec }}" onChange="{{ q.on.spec }}" placeholder="顏色、尺寸、款式"></div>
+      <div class="field"><label>數量 *</label>
+        <div style="display:inline-flex;border:1px solid var(--color-divider)">
+          <button aria-label="減少數量" onClick="{{ q.step.dec }}" disabled="{{ q.step.decDis }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ q.step.decOp }}">{{ ic.minus }}</button>
+          <span style="min-width:40px;display:grid;place-items:center;border-left:1px solid var(--color-divider);border-right:1px solid var(--color-divider);font-variant-numeric:tabular-nums">{{ q.step.qty }}</span>
+          <button aria-label="增加數量" onClick="{{ q.step.inc }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer">{{ ic.plus }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="field" id="q-budget"><label for="q_budget">預算上限 NT$（選填）</label><input id="q_budget" type="number" class="input" style="min-height:44px;border-color:{{ q.bd.budget }}" value="{{ q.v.budget }}" onChange="{{ q.on.budget }}" placeholder="超過預算可以直接不接受報價"><sc-if value="{{ q.err.budget }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.err.budget }}</div></sc-if></div>
+
+    <div class="field" id="q-sub"><label>接受替代品嗎？ *</label>
+      <div style="display:flex;flex-direction:column;border:1px solid {{ q.bd.substitute }}">
+        <sc-for list="{{ q.subOpts }}" as="o" hint-placeholder-count="3"><label class="radio" style="padding:0 14px;min-height:48px;border-bottom:1px solid var(--color-divider);background:{{ o.bg }}"><input type="radio" name="qsub" checked="{{ o.checked }}" onChange="{{ o.on }}"><span class="dot"></span>{{ o.label }}</label></sc-for>
+      </div>
+      <sc-if value="{{ q.err.substitute }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.err.substitute }}</div></sc-if>
+    </div>
+
+    <div class="field" id="q-date"><label>希望到貨時間</label>
+      <div class="seg" style="display:flex">
+        <sc-for list="{{ q.wantOpts }}" as="o" hint-placeholder-count="3"><label class="seg-opt" style="flex:1;justify-content:center;min-height:44px"><input type="radio" name="qwant" checked="{{ o.checked }}" onChange="{{ o.on }}">{{ o.label }}</label></sc-for>
+      </div>
+      <sc-if value="{{ q.isDate }}"><input type="date" class="input" aria-label="希望到貨日期" style="min-height:44px;margin-top:8px;border-color:{{ q.bd.date }}" value="{{ q.v.date }}" onChange="{{ q.on.date }}"></sc-if>
+      <sc-if value="{{ q.err.date }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ q.err.date }}</div></sc-if>
+    </div>
+
+    <div class="field"><label for="q_note">備註（選填）</label><textarea id="q_note" class="input" value="{{ q.v.note }}" onChange="{{ q.on.note }}" placeholder="例如：想要粉色、只在京都店販售"></textarea><div style="text-align:right;font-size:12px;color:var(--color-neutral-700);margin-top:4px;font-variant-numeric:tabular-nums">{{ q.noteCount }}</div></div>
+
+    <button class="btn btn-primary btn-block blueprint" onClick="{{ q.submit }}" disabled="{{ q.submitting }}" style="min-height:50px;font-size:16px;gap:8px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><sc-if value="{{ q.submitting }}">{{ spinner }}</sc-if>送出委託</button>
+  </sc-if>
+
+  <sc-if value="{{ q.showList }}">
+    <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">
+      <sc-for list="{{ q.filters }}" as="c" hint-placeholder-count="4">
+        <button onClick="{{ c.on }}" aria-pressed="{{ c.pressed }}" style="flex:none;min-height:40px;padding:0 14px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:14px;cursor:pointer">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ q.listEmpty }}">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:48px 16px;text-align:center;border:1px dashed var(--color-divider)">
+        <span style="color:var(--color-accent)">{{ ic.msg }}</span>
+        <p style="margin:0;font-size:14px">{{ q.emptyText }}</p>
+        <button class="btn btn-secondary" onClick="{{ q.toNew }}">新增委託</button>
+      </div>
+    </sc-if>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ q.list }}" as="it" hint-placeholder-count="1">
+        <a href="{{ it.href }}" class="blueprint" style="display:flex;flex-direction:column;text-decoration:none;color:inherit">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px">
+            <sc-if value="{{ it.hasImg }}"><img src="{{ it.img }}" alt="{{ it.name }}" style="width:64px;height:64px;object-fit:cover;border:1px solid var(--color-divider)"></sc-if>
+            <sc-if value="{{ it.noImg }}"><div role="img" aria-label="{{ it.name }}" style="width:64px;height:64px;display:grid;place-items:center;background-color:var(--color-surface);background-image:repeating-linear-gradient(135deg,transparent 0 7px,color-mix(in srgb,var(--color-text) 6%,transparent) 7px 8px);color:var(--color-accent);border:1px solid var(--color-divider)">{{ ic.image }}</div></sc-if>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="font-size:15px;font-weight:500;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.name }}</div>
+              <div style="font-size:12px;color:var(--color-neutral-700)">{{ it.meta }}</div>
+              <span class="tag" style="align-self:flex-start;gap:4px;background:{{ it.tag.bg }};color:{{ it.tag.fg }};border:1px solid {{ it.tag.bd }}">{{ it.icon }}{{ it.label }}</span>
+            </div>
+          </div>
+          <sc-if value="{{ it.isQuoted }}">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;background:var(--color-accent-900);color:var(--color-bg);font-variant-numeric:tabular-nums">
+              <span style="font-size:13px">報價一補 <b style="font-family:'Barlow Condensed',sans-serif;font-size:20px">{{ it.total }}</b></span>
+              <span style="display:flex;align-items:center;gap:6px;font-size:13px">{{ ic.clock16 }}{{ it.left }}</span>
+            </div>
+          </sc-if>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.quoteDetail }}">
+<div data-screen-label="報價單詳情" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:18px">
+  <sc-if value="{{ qd.ok }}">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.1em;color:var(--color-neutral-700)">{{ qd.id }}</span><span class="tag" style="gap:4px;background:{{ qd.tag.bg }};color:{{ qd.tag.fg }};border:1px solid {{ qd.tag.bd }}">{{ qd.icon }}{{ qd.label }}</span></div>
+      <h2 style="margin:0;font-size:26px;line-height:1.2">{{ qd.name }}</h2>
+    </div>
+
+    <div style="border:1px solid var(--color-divider)">
+      <button onClick="{{ qd.toggleReq }}" aria-expanded="{{ qd.reqExp }}" style="width:100%;min-height:48px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;background:transparent;border:0;cursor:pointer;font-weight:500">你送出的委託內容<span style="display:grid;transform:{{ qd.chevRot }};transition:transform 200ms">{{ ic.chevD }}</span></button>
+      <sc-if value="{{ qd.reqOpen }}">
+        <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;animation:hyIn 160ms ease-out">
+          <sc-if value="{{ qd.hasImages }}"><div style="display:flex;gap:8px;overflow-x:auto"><sc-for list="{{ qd.images }}" as="im" hint-placeholder-count="0"><img src="{{ im.src }}" alt="{{ im.alt }}" style="width:72px;height:72px;object-fit:cover;flex:none;border:1px solid var(--color-divider)"></sc-for></div></sc-if>
+          <sc-for list="{{ qd.reqRows }}" as="rw" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:88px minmax(0,1fr);gap:8px;font-size:13px"><span style="color:var(--color-neutral-700)">{{ rw.k }}</span><span style="word-break:break-all">{{ rw.v }}</span></div></sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ qd.isSubmitted }}">
+      <div class="blueprint" style="padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><span style="color:var(--color-accent)">{{ ic.clock }}</span><div style="font-weight:700">等待代購者報價中</div><div style="font-size:13px;color:var(--color-neutral-700)">通常 24 小時內回覆，報價後會在首頁提醒你</div></div>
+    </sc-if>
+    <sc-if value="{{ qd.isUnavailable }}">
+      <div style="padding:16px;display:flex;gap:10px;border:1px solid var(--color-text)">{{ ic.alert }}<div><div style="font-weight:700">很抱歉，這件商品無法代購</div><div style="font-size:13px;color:var(--color-neutral-800);margin-top:2px">{{ qd.unavailableReason }}</div></div></div>
+    </sc-if>
+
+    <sc-if value="{{ qd.hasOffer }}">
+      <div class="blueprint" style="padding:16px;display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="margin:0;font-size:21px">報價單</h3><span style="font-size:12px;color:var(--color-neutral-700)">{{ qd.quotedAt }}</span></div>
+        <sc-for list="{{ qd.offerRows }}" as="rw" hint-placeholder-count="5"><div style="display:flex;justify-content:space-between;gap:12px;font-size:14px"><span style="color:var(--color-neutral-800)">{{ rw.k }}</span><span>{{ rw.v }}</span></div></sc-for>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--color-divider);padding-top:10px"><span style="font-weight:700">一補合計（接受後付款）</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:600">{{ qd.total1 }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--color-neutral-700)"><span>二補預估（抵台後）</span><span>{{ qd.est2 }}</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;margin-top:4px;background:{{ qd.expBg }};color:{{ qd.expFg }};font-size:13px;font-weight:500">{{ ic.clock16 }}{{ qd.expiry }}</div>
+        <sc-if value="{{ qd.hasOfferNote }}"><div style="display:flex;flex-direction:column;gap:2px;padding-top:6px"><span style="font-size:12px;letter-spacing:.08em;color:var(--color-accent-700);font-weight:700">代購者附註</span><span style="font-size:14px">{{ qd.offerNote }}</span></div></sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ qd.isAccepted }}"><a href="{{ qd.orderHref }}" class="btn btn-secondary" style="min-height:48px;gap:8px">已接受報價 · 查看訂單 {{ ic.arrow16 }}</a></sc-if>
+    <sc-if value="{{ qd.isDeclined }}"><div style="font-size:13px;color:var(--color-neutral-700)">你已婉拒此報價{{ qd.declineReason }}</div></sc-if>
+    <sc-if value="{{ qd.canReask }}"><button class="btn btn-primary btn-block blueprint" onClick="{{ qd.reask }}" style="min-height:48px;gap:8px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>{{ ic.refresh16 }}重新詢價</button></sc-if>
+
+    <sc-if value="{{ qd.isQuoted }}">
+      <div style="position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;justify-content:center;pointer-events:none">
+        <div style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-divider);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 2fr;gap:12px">
+          <button class="btn btn-secondary" onClick="{{ qd.decline }}" style="min-height:48px">婉拒</button>
+          <button class="btn btn-primary blueprint" onClick="{{ qd.accept }}" style="min-height:48px;font-size:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>接受並付款 {{ qd.total1 }}</button>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+  <sc-if value="{{ qd.missing }}"><div style="padding:48px 16px;text-align:center">找不到這筆報價</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.orders }}">
+<div data-screen-label="我的訂單" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:18px">
+  <div role="tablist" style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--color-divider)">
+    <sc-for list="{{ ol.filters }}" as="t" hint-placeholder-count="4">
+      <button role="tab" aria-selected="{{ t.pressed }}" onClick="{{ t.on }}" style="min-height:44px;border:0;border-bottom:2px solid {{ t.bar }};margin-bottom:-1px;background:transparent;color:{{ t.fg }};font-size:14px;font-weight:{{ t.fw }};cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px">{{ t.label }}<sc-if value="{{ t.hasBadge }}"><span style="min-width:18px;height:18px;padding:0 5px;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--color-accent-900);color:var(--color-bg)">{{ t.badge }}</span></sc-if></button>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ ol.hasTodo }}">
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <h3 style="margin:0;font-size:20px;display:flex;align-items:center;gap:8px">{{ ic.alert }}待你處理</h3>
+      <sc-for list="{{ ol.todo }}" as="o" hint-placeholder-count="1">
+        <div class="blueprint" style="display:flex;flex-direction:column;border-color:var(--color-accent-900)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--color-accent-900);color:var(--color-bg);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums">{{ o.tagIcon }}{{ o.actionTitle }}</div>
+          <a href="{{ o.href }}" style="display:flex;flex-direction:column;gap:10px;padding:12px;text-decoration:none;color:inherit">
+            <div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:.05em">{{ o.id }}</span><span style="color:var(--color-neutral-700)">{{ o.date }}</span></div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <sc-for list="{{ o.thumbs }}" as="t" hint-placeholder-count="2">
+                <sc-if value="{{ t.hasImg }}"><img src="{{ t.src }}" alt="{{ t.alt }}" style="width:44px;height:44px;object-fit:cover;border:1px solid var(--color-divider)"></sc-if>
+                <sc-if value="{{ t.noImg }}"><span role="img" aria-label="{{ t.alt }}" style="width:44px;height:44px;display:grid;place-items:center;background:var(--color-surface);color:var(--color-accent);border:1px solid var(--color-divider)">{{ t.icon }}</span></sc-if>
+              </sc-for>
+              <sc-if value="{{ o.hasMore }}"><span style="width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--color-divider);font-size:13px">{{ o.more }}</span></sc-if>
+              <span style="margin-left:auto;font-size:13px;color:var(--color-neutral-700)">{{ o.count }}</span>
+            </div>
+          </a>
+          <div style="padding:0 12px 12px">
+            <sc-if value="{{ o.hasPay }}"><button class="btn btn-primary blueprint" onClick="{{ o.pay }}" style="width:100%;min-height:44px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>前往付款</button></sc-if>
+            <sc-if value="{{ o.noPay }}"><a href="{{ o.href }}" class="btn btn-secondary" style="width:100%">查看處理方式</a></sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ ol.hasList }}">
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <sc-if value="{{ ol.hasTodo }}"><h3 style="margin:0;font-size:20px">其他訂單</h3></sc-if>
+      <sc-for list="{{ ol.list }}" as="o" hint-placeholder-count="2">
+        <a href="{{ o.href }}" class="blueprint" style="display:flex;flex-direction:column;gap:10px;padding:12px;text-decoration:none;color:inherit">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:.05em">{{ o.id }}</span><span style="color:var(--color-neutral-700)">{{ o.date }}</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <sc-for list="{{ o.thumbs }}" as="t" hint-placeholder-count="2">
+              <sc-if value="{{ t.hasImg }}"><img src="{{ t.src }}" alt="{{ t.alt }}" style="width:44px;height:44px;object-fit:cover;border:1px solid var(--color-divider)"></sc-if>
+              <sc-if value="{{ t.noImg }}"><span role="img" aria-label="{{ t.alt }}" style="width:44px;height:44px;display:grid;place-items:center;background:var(--color-surface);color:var(--color-accent);border:1px solid var(--color-divider)">{{ t.icon }}</span></sc-if>
+            </sc-for>
+            <sc-if value="{{ o.hasMore }}"><span style="width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--color-divider);font-size:13px">{{ o.more }}</span></sc-if>
+            <span style="margin-left:auto;font-size:13px;color:var(--color-neutral-700)">{{ o.count }}</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <span class="tag" style="gap:4px;background:{{ o.tag.bg }};color:{{ o.tag.fg }};border:1px solid {{ o.tag.bd }}">{{ o.tagIcon }}{{ o.label }}</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-variant-numeric:tabular-nums;color:var(--color-neutral-700)">{{ o.step }}</span>
+          </div>
+          <div style="height:4px;background:var(--color-neutral-200)"><div style="height:100%;width:{{ o.pct }};background:var(--color-accent)"></div></div>
+        </a>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ ol.empty }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:56px 16px;text-align:center">
+      <span style="color:var(--color-accent)">{{ ic.package }}</span>
+      <h3 style="margin:0;font-size:22px">{{ ol.emptyTitle }}</h3>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-700)">去逛逛開團商品吧</p>
+      <a href="#/" class="btn btn-primary blueprint" style="padding:0 24px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>去逛逛</a>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.orderDetail }}">
+<div data-screen-label="訂單詳情" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:22px">
+  <sc-if value="{{ od.ok }}">
+    <section class="blueprint" style="background:var(--color-accent-900);color:var(--color-bg);padding:18px;display:flex;flex-direction:column;gap:8px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.12em;color:var(--color-accent-300)"><span>{{ od.id }}</span><span>STEP {{ od.step }}</span></div>
+      <div style="display:flex;align-items:center;gap:10px">{{ od.icon }}<h2 style="margin:0;font-size:30px">{{ od.label }}</h2></div>
+      <p style="margin:0;font-size:14px;color:var(--color-accent-100);text-wrap:pretty">{{ od.desc }}</p>
+      <div style="font-size:12px;color:var(--color-accent-300);font-variant-numeric:tabular-nums">更新於 {{ od.updated }}</div>
+    </section>
+
+    <sc-if value="{{ od.hasAction }}">
+      <section class="blueprint" style="padding:16px;display:flex;flex-direction:column;gap:10px;border-color:var(--color-text)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;align-items:center;gap:8px;font-weight:700">{{ ic.alert }}{{ od.actionTitle }}</div>
+        <p style="margin:0;font-size:14px;line-height:1.6;text-wrap:pretty">{{ od.actionText }}</p>
+        <sc-if value="{{ od.hasBreak }}"><div style="font-size:12px;color:var(--color-neutral-700);font-variant-numeric:tabular-nums">{{ od.breakText }}</div></sc-if>
+        <sc-if value="{{ od.canPay }}"><button class="btn btn-primary btn-block blueprint" onClick="{{ od.pay }}" style="min-height:48px;font-size:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>前往付款 {{ od.due }}</button></sc-if>
+      </section>
+    </sc-if>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <h3 style="margin:0;font-size:21px">訂單進度</h3>
+      <ol style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ od.timeline }}" as="n" hint-placeholder-count="9">
+          <li style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;min-height:46px">
+            <div style="position:relative;display:flex;justify-content:center">
+              <sc-if value="{{ n.notLast }}"><span style="position:absolute;top:20px;bottom:0;left:10.5px;width:1px;background:{{ n.lineColor }}"></span></sc-if>
+              <sc-if value="{{ n.isDone }}"><span style="width:18px;height:18px;margin-top:2px;background:var(--color-accent-800);color:var(--color-bg);display:grid;place-items:center;position:relative">{{ ic.check12 }}</span></sc-if>
+              <sc-if value="{{ n.isCur }}">{{ pulseDot }}</sc-if>
+              <sc-if value="{{ n.isTodo }}"><span style="width:14px;height:14px;margin-top:4px;border:1.5px solid var(--color-neutral-500);background:var(--color-bg);position:relative"></span></sc-if>
+            </div>
+            <div style="padding-bottom:14px;display:flex;flex-direction:column;gap:2px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:{{ n.fw }};color:{{ n.color }}">{{ n.label }}<sc-if value="{{ n.isCur }}"><span class="tag tag-accent" style="padding:1px 6px;font-size:10px">目前</span></sc-if></div>
+              <sc-if value="{{ n.hasTime }}"><div style="font-size:12px;color:var(--color-neutral-700);font-variant-numeric:tabular-nums">{{ n.time }}</div></sc-if>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0;font-size:21px">商品清單</h3>
+      <div style="border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ od.items }}" as="it" hint-placeholder-count="2">
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--color-divider)">
+            <sc-if value="{{ it.t.hasImg }}"><img src="{{ it.t.src }}" alt="{{ it.name }}" style="width:56px;height:56px;object-fit:cover;border:1px solid var(--color-divider)"></sc-if>
+            <sc-if value="{{ it.t.noImg }}"><span role="img" aria-label="{{ it.name }}" style="width:56px;height:56px;display:grid;place-items:center;background:var(--color-surface);color:var(--color-accent);border:1px solid var(--color-divider)">{{ it.t.icon }}</span></sc-if>
+            <div style="min-width:0"><div style="font-size:14px;font-weight:500;line-height:1.35">{{ it.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ it.meta }}</div></div>
+            <div style="font-variant-numeric:tabular-nums;font-size:14px;text-align:right">{{ it.yen }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section class="blueprint" style="padding:16px;display:flex;flex-direction:column;gap:10px;font-variant-numeric:tabular-nums">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <h3 style="margin:0;font-size:21px">費用明細</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px"><span style="display:flex;align-items:center;gap:8px">一補（商品＋代購費＋日本運費）</span><span style="display:flex;align-items:center;gap:8px;flex:none"><span class="tag" style="background:{{ od.p1Tag.bg }};color:{{ od.p1Tag.fg }};border:1px solid {{ od.p1Tag.bd }}">{{ od.p1State }}</span>{{ od.p1 }}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px"><span>{{ od.p2Label }}</span><span style="display:flex;align-items:center;gap:8px;flex:none"><span class="tag" style="background:{{ od.p2Tag.bg }};color:{{ od.p2Tag.fg }};border:1px solid {{ od.p2Tag.bd }}">{{ od.p2State }}</span>{{ od.p2 }}</span></div>
+      <sc-if value="{{ od.hasP2Detail }}"><div style="font-size:12px;color:var(--color-neutral-700)">{{ od.p2Detail }}</div></sc-if>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--color-divider);padding-top:10px"><span style="font-weight:700">{{ od.totalLabel }}</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:600">{{ od.total }}</span></div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0;font-size:21px">收件與取貨</h3>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ od.info }}" as="rw" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:14px"><span style="color:var(--color-neutral-700)">{{ rw.k }}</span><span>{{ rw.v }}</span></div></sc-for>
+      </div>
+    </section>
+
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:25;display:flex;justify-content:center;pointer-events:none">
+      <div style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-divider);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:12px">
+        <a href="{{ lineUrl }}" target="_blank" rel="noopener" class="btn btn-secondary" style="flex:1;min-height:48px;gap:8px">{{ ic.line16 }}聯絡代購者</a>
+        <sc-if value="{{ od.canConfirm }}"><button class="btn btn-primary blueprint" onClick="{{ od.confirm }}" style="flex:1;min-height:48px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>確認收貨</button></sc-if>
+        <sc-if value="{{ od.canPay }}"><button class="btn btn-primary blueprint" onClick="{{ od.pay }}" style="flex:1;min-height:48px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>前往付款</button></sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ od.missing }}"><div style="padding:48px 16px;text-align:center">找不到這筆訂單</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.info }}">
+<div data-screen-label="須知" style="animation:hyIn 200ms ease-out;padding:16px;display:flex;flex-direction:column;gap:28px">
+  <section class="blueprint" style="padding:16px;display:flex;flex-direction:column;gap:14px">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-accent)">{{ ic.calc }}</span><h3 style="margin:0;font-size:22px">運費試算器</h3></div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end">
+      <div class="field"><label for="c_jpy">日幣價格（單件）</label><input id="c_jpy" type="number" class="input" style="min-height:44px;font-variant-numeric:tabular-nums" value="{{ calc.v.jpy }}" onChange="{{ calc.on.jpy }}"></div>
+      <div class="field"><label>數量</label>
+        <div style="display:inline-flex;border:1px solid var(--color-divider)">
+          <button aria-label="減少數量" onClick="{{ calc.step.dec }}" disabled="{{ calc.step.decDis }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;opacity:{{ calc.step.decOp }}">{{ ic.minus }}</button>
+          <span style="min-width:40px;display:grid;place-items:center;border-left:1px solid var(--color-divider);border-right:1px solid var(--color-divider);font-variant-numeric:tabular-nums">{{ calc.step.qty }}</span>
+          <button aria-label="增加數量" onClick="{{ calc.step.inc }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer">{{ ic.plus }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="field"><label for="c_kg">預估重量（單件，kg）</label><input id="c_kg" type="number" step="0.05" class="input" style="min-height:44px;font-variant-numeric:tabular-nums" value="{{ calc.v.kg }}" onChange="{{ calc.on.kg }}">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+        <sc-for list="{{ calc.presets }}" as="pr" hint-placeholder-count="3"><button onClick="{{ pr.on }}" style="min-height:36px;padding:0 10px;border:1px solid {{ pr.bd }};background:{{ pr.bg }};font-size:12px;cursor:pointer">{{ pr.label }}</button></sc-for>
+      </div>
+    </div>
+    <div class="field"><label>取貨方式</label>
+      <div class="seg" style="display:flex">
+        <sc-for list="{{ calc.methods }}" as="o" hint-placeholder-count="2"><label class="seg-opt" style="flex:1;justify-content:center;min-height:44px"><input type="radio" name="cmethod" checked="{{ o.checked }}" onChange="{{ o.on }}">{{ o.label }}</label></sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--color-divider);font-variant-numeric:tabular-nums">
+      <div style="padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;color:var(--color-neutral-700)">一補 · 下單付</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600">{{ calc.out.p1 }}</span></div>
+      <div style="padding:10px;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--color-divider)"><span style="font-size:11px;color:var(--color-neutral-700)">二補 · 預估</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600">{{ calc.out.p2 }}</span></div>
+      <div style="padding:10px;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--color-divider);background:var(--color-accent-900);color:var(--color-bg)"><span style="font-size:11px;color:var(--color-accent-200)">預估總計</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600">{{ calc.out.total }}</span></div>
+    </div>
+    <div style="font-size:12px;color:var(--color-neutral-700);font-variant-numeric:tabular-nums">{{ calc.out.note }}</div>
+    <sc-if value="{{ calc.out.hasTax }}"><div style="display:flex;gap:8px;font-size:13px;padding:10px 12px;border:1px solid var(--color-text)">{{ ic.alert16 }}商品金額超過 NT$2,000 免稅門檻，可能需繳關稅，將併入二補收取。</div></sc-if>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h3 style="margin:0;font-size:22px">代購流程</h3>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--color-divider)">
+      <sc-for list="{{ flowSteps }}" as="fs" hint-placeholder-count="5">
+        <li style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;text-align:center;border-left:{{ fs.bl }}">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.1em;color:var(--color-neutral-700)">{{ fs.n }}</span>
+          <span style="color:var(--color-accent)">{{ fs.icon }}</span>
+          <span style="font-size:12px;line-height:1.35;font-weight:500">{{ fs.label }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h3 style="margin:0;font-size:22px">常見問題</h3>
+    <div style="border-top:1px solid var(--color-divider)">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid var(--color-divider)">
+          <button onClick="{{ f.on }}" aria-expanded="{{ f.exp }}" style="width:100%;min-height:52px;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;cursor:pointer;text-align:left;font-size:15px;font-weight:500">{{ f.q }}<span style="display:grid;flex:none;transform:{{ f.rot }};transition:transform 200ms">{{ ic.chevD }}</span></button>
+          <sc-if value="{{ f.open }}"><p style="margin:0;padding:0 0 14px;font-size:14px;line-height:1.7;color:var(--color-neutral-800);animation:hyIn 160ms ease-out;text-wrap:pretty">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h3 style="margin:0;font-size:22px">聯絡我們</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <a href="{{ lineUrl }}" target="_blank" rel="noopener" class="btn btn-secondary" style="min-height:48px;gap:8px">{{ ic.line16 }}LINE 官方帳號</a>
+      <a href="{{ igUrl }}" target="_blank" rel="noopener" class="btn btn-secondary" style="min-height:48px;gap:8px">{{ ic.ig16 }}Instagram</a>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+<nav aria-label="主選單" style="position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;justify-content:center;pointer-events:none">
+  <div style="pointer-events:auto;width:min(480px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:var(--color-bg);border-top:1px solid var(--color-divider);padding-bottom:env(safe-area-inset-bottom)">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+      <a href="{{ t.href }}" aria-current="{{ t.cur }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:62px;text-decoration:none;color:{{ t.color }};font-size:12px;font-weight:{{ t.fw }}">
+        <span style="position:absolute;top:-1px;left:22%;right:22%;height:2px;background:{{ t.bar }}"></span>
+        <span style="position:relative;display:grid">{{ t.icon }}<sc-if value="{{ t.hasBadge }}"><span style="position:absolute;top:-5px;right:-12px;min-width:17px;height:17px;padding:0 4px;background:var(--color-accent-900);color:var(--color-bg);font-size:10px;font-weight:700;display:grid;place-items:center">{{ t.badge }}</span></sc-if></span>
+        <span>{{ t.label }}</span>
+      </a>
+    </sc-for>
+  </div>
+</nav>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+  <button onClick="{{ demo.toggle }}" aria-expanded="{{ demo.exp }}" style="position:fixed;z-index:40;bottom:{{ fabBottom }};right:max(12px,calc(50vw - 228px));min-height:44px;padding:0 14px;display:flex;align-items:center;gap:6px;background:var(--color-text);color:var(--color-bg);border:0;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:.12em;box-shadow:var(--shadow-md);cursor:pointer">{{ ic.demo16 }}DEMO</button>
+  <sc-if value="{{ demo.open }}">
+    <div role="dialog" aria-label="Demo 模式" style="position:fixed;z-index:41;bottom:{{ demo.panelBottom }};right:max(12px,calc(50vw - 228px));width:min(300px,calc(100vw - 24px));background:var(--color-bg);border:1px solid var(--color-text);box-shadow:var(--shadow-lg);animation:hyIn 160ms ease-out">
+      <div style="padding:0 6px 0 14px;min-height:40px;background:var(--color-text);color:var(--color-bg);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:8px">示範用：模擬代購者操作<button aria-label="關閉" onClick="{{ demo.toggle }}" style="width:36px;height:36px;display:grid;place-items:center;background:transparent;border:0;color:var(--color-bg);cursor:pointer">{{ ic.x16 }}</button></div>
+      <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:12px;color:var(--color-neutral-700);line-height:1.5">{{ demo.ctx }}</div>
+        <sc-for list="{{ demo.actions }}" as="a" hint-placeholder-count="0"><button class="btn btn-secondary" onClick="{{ a.on }}" disabled="{{ a.dis }}" style="justify-content:flex-start;width:100%;gap:8px;font-size:15px">{{ a.icon }}{{ a.label }}</button></sc-for>
+        <div style="border-top:1px solid var(--color-divider);padding-top:8px;margin-top:4px"><button class="btn btn-ghost" onClick="{{ demo.reset }}" style="width:100%;justify-content:flex-start;gap:8px;font-size:15px">{{ ic.refresh16 }}重置所有資料</button></div>
+      </div>
+    </div>
+  </sc-if>
+</sc-if>
+
+<sc-if value="{{ sheet.pay }}">
+  <div onClick="{{ sheet.close }}" style="position:fixed;inset:0;z-index:60;background:color-mix(in srgb,var(--color-neutral-900) 50%,transparent);animation:hyFade 150ms"></div>
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:61;display:flex;justify-content:center;pointer-events:none">
+    <div role="dialog" aria-modal="true" aria-label="付款" style="pointer-events:auto;width:min(480px,100%);background:var(--color-bg);border-top:1px solid var(--color-text);padding:18px 16px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;animation:hyUp 220ms ease-out;font-variant-numeric:tabular-nums">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;font-size:22px">付款（模擬）</h3><button aria-label="關閉" onClick="{{ sheet.close }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;margin-right:-10px">{{ ic.x }}</button></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:14px;color:var(--color-neutral-700)">{{ sheet.label }} · {{ sheet.orderId }}</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:600;line-height:1">{{ sheet.amount }}</span></div>
+      <div style="border:1px solid var(--color-divider);padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px">
+        <div style="font-size:12px;letter-spacing:.08em;color:var(--color-accent-700);font-weight:700">轉帳帳號（示意用假資料）</div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">銀行代碼</span><span>{{ bank.code }}</span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">帳號</span><span style="letter-spacing:.04em">{{ bank.account }}</span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-neutral-700)">戶名</span><span>{{ bank.holder }}</span></div>
+      </div>
+      <div class="field"><label for="pay_last5">你的帳號末五碼 *</label><input id="pay_last5" type="tel" class="input" style="min-height:44px;letter-spacing:.3em;font-size:18px;border-color:{{ sheet.bd }}" value="{{ sheet.last5 }}" onChange="{{ sheet.onLast5 }}" placeholder="12345"><sc-if value="{{ sheet.err }}"><div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--color-neutral-900)">{{ ic.alert16 }}{{ sheet.err }}</div></sc-if></div>
+      <button class="btn btn-primary btn-block blueprint" onClick="{{ sheet.submit }}" disabled="{{ sheet.loading }}" style="min-height:50px;font-size:16px;gap:8px;margin-top:0"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><sc-if value="{{ sheet.loading }}">{{ spinner }}</sc-if>我已完成轉帳</button>
+      <div style="font-size:12px;color:var(--color-neutral-700);text-align:center">此為示範流程，不會產生任何實際扣款</div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ sheet.terms }}">
+  <div onClick="{{ sheet.close }}" style="position:fixed;inset:0;z-index:60;background:color-mix(in srgb,var(--color-neutral-900) 50%,transparent);animation:hyFade 150ms"></div>
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:61;display:flex;justify-content:center;pointer-events:none">
+    <div role="dialog" aria-modal="true" aria-label="代購須知" style="pointer-events:auto;width:min(480px,100%);max-height:80vh;overflow-y:auto;background:var(--color-bg);border-top:1px solid var(--color-text);padding:18px 16px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:12px;animation:hyUp 220ms ease-out">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;font-size:22px">代購須知</h3><button aria-label="關閉" onClick="{{ sheet.close }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;cursor:pointer;margin-right:-10px">{{ ic.x }}</button></div>
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:4px;padding-bottom:10px;border-bottom:1px solid var(--color-divider)"><div style="font-weight:700;font-size:14px">{{ f.q }}</div><div style="font-size:13px;line-height:1.65;color:var(--color-neutral-800)">{{ f.a }}</div></div></sc-for>
+      <button class="btn btn-primary btn-block blueprint" onClick="{{ sheet.agree }}" style="min-height:48px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>我已閱讀並同意</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ dlg.show }}">
+  <div class="dialog-backdrop" style="z-index:85;animation:hyFade 150ms" onClick="{{ dlg.cancel }}">
+    <div class="dialog blueprint" role="alertdialog" aria-modal="true" onClick="{{ stop }}" style="background:var(--color-bg)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="dialog-title">{{ dlg.title }}</div>
+      <div class="dialog-body">{{ dlg.body }}</div>
+      <sc-if value="{{ dlg.hasReasons }}"><div style="display:flex;flex-direction:column;gap:4px"><sc-for list="{{ dlg.reasons }}" as="o" hint-placeholder-count="0"><label class="radio" style="min-height:40px"><input type="radio" name="dlgr" checked="{{ o.checked }}" onChange="{{ o.on }}"><span class="dot"></span>{{ o.label }}</label></sc-for></div></sc-if>
+      <div class="dialog-actions"><button class="btn btn-secondary" onClick="{{ dlg.cancel }}">取消</button><button class="btn btn-primary" onClick="{{ dlg.ok }}" disabled="{{ dlg.okDis }}">{{ dlg.okLabel }}</button></div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ toast.show }}">
+  <div role="status" aria-live="polite" style="position:fixed;z-index:90;left:0;right:0;bottom:{{ toastBottom }};display:flex;justify-content:center;pointer-events:none;padding:0 16px">
+    <div style="pointer-events:auto;max-width:440px;display:flex;align-items:center;gap:10px;padding:0 14px;min-height:44px;background:var(--color-neutral-900);color:var(--color-bg);box-shadow:var(--shadow-lg);font-size:14px;animation:hyIn 180ms ease-out">{{ ic.check16 }}<span>{{ toast.msg }}</span><sc-if value="{{ toast.hasUndo }}"><button onClick="{{ toast.undo }}" style="background:transparent;border:0;color:var(--color-accent-300);font-weight:700;cursor:pointer;min-height:40px;padding:0 4px">復原</button></sc-if></div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;rate&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:0.215,&quot;min&quot;:0.15,&quot;max&quot;:0.3,&quot;step&quot;:0.001,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;費用設定&quot;},&quot;intlPerKg&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:220,&quot;min&quot;:100,&quot;max&quot;:500,&quot;step&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;費用設定&quot;},&quot;showDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+const CONFIG = {
+  rate: 0.215, rateUpdatedAt: '10/19 09:30',
+  serviceFeeRate: 0.10, serviceFeeMin: 50,
+  intlPerKg: 220, minKg: 0.5,
+  taxFreeLimit: 2000, taxRate: 0.05,
+  twShipping: { cvs: 60, home: 100 },
+  quoteValidHours: 48,
+  bank: { code: '812（示意銀行）', account: '0000-1234-5678-90', holder: '日和代購（示意）' },
+  lineUrl: 'https://line.me/R/ti/p/@hiyori-demo', igUrl: 'https://www.instagram.com/hiyori.demo/'
+};
+const LS = { cart: 'hiyori_cart', orders: 'hiyori_orders', quotes: 'hiyori_quotes', draft: 'hiyori_quote_draft', profile: 'hiyori_profile', seed: 'hiyori_seed' };
+const H = 36e5, D = 864e5, MIN = 6e4;
+const ld = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
+const sv = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
+const fmtN = n => Math.round(n).toLocaleString('en-US');
+const NT = n => 'NT$' + fmtN(n);
+const JP = n => '¥' + fmtN(n);
+const twd = (j, r) => Math.round(j * (r || CONFIG.rate));
+const ceilHalf = kg => Math.max(CONFIG.minKg, Math.ceil(kg * 2 - 1e-9) / 2);
+const twShip = m => CONFIG.twShipping[m] || CONFIG.twShipping.cvs;
+const intlFee = kg => Math.round(ceilHalf(kg) * CONFIG.intlPerKg);
+const calc1 = (lines, r) => {
+  const sub = lines.reduce((s, l) => s + twd(l.priceJPY, r) * l.qty, 0);
+  const fee = lines.length ? Math.max(CONFIG.serviceFeeMin, Math.round(sub * CONFIG.serviceFeeRate)) : 0;
+  const jp = twd(lines.reduce((s, l) => s + (l.jpShippingJPY || 0), 0), r);
+  return { sub, fee, jp, total: sub + fee + jp };
+};
+const p2 = n => String(n).padStart(2, '0');
+const fmtMD = t => { const d = new Date(t); return `${p2(d.getMonth() + 1)}/${p2(d.getDate())} ${p2(d.getHours())}:${p2(d.getMinutes())}`; };
+const fmtD = t => { const d = new Date(t); return `${d.getFullYear()}/${p2(d.getMonth() + 1)}/${p2(d.getDate())}`; };
+const ymd = t => { const d = new Date(t); return String(d.getFullYear()).slice(2) + p2(d.getMonth() + 1) + p2(d.getDate()); };
+const cd = ms => { if (ms <= 0) return '00:00:00'; const s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (d ? d + ' 天 ' : '') + p2(h) + ':' + p2(m) + ':' + p2(x); };
+const ci = (x, y, r) => `M${x - r} ${y}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0`;
+const ICONS = {
+  back: ['m15 18-6-6 6-6'], chevD: ['m6 9 6 6 6-6'], arrow: ['M5 12h14', 'm12 5 7 7-7 7'],
+  cart: [ci(8, 21, 1), ci(19, 21, 1), 'M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'],
+  bag: ['M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z', 'M3 6h18', 'M16 10a4 4 0 0 1-8 0'],
+  msg: ['M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', 'M8 9h8', 'M8 13h5'],
+  package: ['M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z', 'M12 22V12', 'M3.3 7 12 12l8.7-5', 'm7.5 4.27 9 5.15'],
+  book: ['M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z', 'M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'],
+  plus: ['M5 12h14', 'M12 5v14'], minus: ['M5 12h14'],
+  trash: ['M3 6h18', 'M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6', 'M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2'],
+  check: ['M20 6 9 17l-5-5'], x: ['M18 6 6 18', 'm6 6 12 12'],
+  clock: [ci(12, 12, 10), 'M12 6v6l4 2'],
+  alert: ['m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3', 'M12 9v4', 'M12 17h.01'],
+  info: [ci(12, 12, 10), 'M12 16v-4', 'M12 8h.01'],
+  imgPlus: ['M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7', 'M16 5h6', 'M19 2v6', 'm21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21', ci(9, 9, 2)],
+  image: ['M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z', 'm21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21', ci(9, 9, 2)],
+  camera: ['M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z', ci(12, 13, 3)],
+  truck: ['M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2', 'M15 18H9', 'M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14', ci(17, 18, 2), ci(7, 18, 2)],
+  plane: ['M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'],
+  store: ['M3 9 4.5 4h15L21 9', 'M4 9v11h16V9', 'M3 9a3 3 0 0 0 6 0a3 3 0 0 0 6 0a3 3 0 0 0 6 0', 'M10 20v-5h4v5'],
+  wallet: ['M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1', 'M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4'],
+  scale: ['M12 3v18', 'M7 21h10', 'M3 7h18', 'm6 7-3 7a3 3 0 0 0 6 0z', 'm18 7-3 7a3 3 0 0 0 6 0z'],
+  line: ['M7.9 20A9 9 0 1 0 4 16.1L2 22Z'],
+  ig: ['M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z', ci(12, 12, 4), 'M17.5 6.5h.01'],
+  refresh: ['M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8', 'M21 3v5h-5', 'M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16', 'M8 16H3v5'],
+  demo: ['M4 21v-7', 'M4 10V3', 'M12 21v-9', 'M12 8V3', 'M20 21v-5', 'M20 12V3', 'M1 14h6', 'M9 8h6', 'M17 16h6'],
+  calc: ['M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z', 'M8 6h8', 'M8 10h.01', 'M12 10h.01', 'M16 10h.01', 'M8 14h.01', 'M12 14h.01', 'M16 14h.01', 'M8 18h.01', 'M12 18h.01', 'M16 18h.01'],
+  search: [ci(11, 11, 8), 'm21 21-4.3-4.3'],
+  yen: ['M12 9.5V21', 'm12 9.5 5-7.5', 'm12 9.5-5-7.5', 'M6 15h12', 'M6 11h12'],
+  drop: ['M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z'],
+  cookie: ['M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5', 'M8.5 8.5v.01', 'M16 15.5v.01', 'M12 12v.01', 'M11 17v.01', 'M7 14v.01'],
+  pen: ['M12 20h9', 'M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86z'],
+  star: ['M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z'],
+  shirt: ['M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z']
+};
+const mkIcon = (n, s, sw) => React.createElement('svg', { width: s, height: s, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: sw || 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true, style: { display: 'block', flex: 'none' } }, ICONS[n].map((d, i) => React.createElement('path', { d, key: i })));
+const ICC = {}; const icon = (n, s, sw) => ICC[n + s + (sw || '')] || (ICC[n + s + (sw || '')] = mkIcon(n, s, sw));
+const CAT_ICON = { '藥妝保養': 'drop', '零食': 'cookie', '文具雜貨': 'pen', '動漫周邊': 'star', '服飾': 'shirt', '委託': 'image' };
+const CATS = ['全部', '藥妝保養', '零食', '文具雜貨', '動漫周邊', '服飾'];
+const ORDER_FLOW = ['pending_payment_1', 'paid_1', 'purchasing', 'arrived_jp', 'shipping_intl', 'arrived_tw', 'pending_payment_2', 'shipped_tw', 'completed'];
+const OM = {
+  pending_payment_1: { label: '待付一補', icon: 'wallet', tone: 'solid', desc: '訂單已成立，請完成一補付款，確認收款後即開始代購。' },
+  paid_1: { label: '已付款', icon: 'check', tone: 'line', desc: '已確認收到一補款項，即將前往日本店舖購買。' },
+  purchasing: { label: '代購中', icon: 'bag', tone: 'line', desc: '代購者正在日本為你購買商品，買到後會寄往日本倉。' },
+  arrived_jp: { label: '日本倉到貨', icon: 'package', tone: 'line', desc: '商品已寄達日本倉，預計 3–5 天內寄出。' },
+  shipping_intl: { label: '國際運送中', icon: 'plane', tone: 'line', desc: '商品正從日本寄往台灣，一般 5–7 天抵達。' },
+  arrived_tw: { label: '已抵台', icon: 'scale', tone: 'line', desc: '商品已抵台並完成秤重，二補金額已確定。' },
+  pending_payment_2: { label: '待付二補', icon: 'wallet', tone: 'solid', desc: '二補金額已確定，請於 3 天內付款，付款後即從台灣寄出。' },
+  shipped_tw: { label: '台灣出貨', icon: 'truck', tone: 'line', desc: '已寄出至你指定的門市或地址，請留意取貨通知。' },
+  completed: { label: '已完成', icon: 'check', tone: 'tint', desc: '已完成取貨，謝謝你的訂購！' },
+  out_of_stock: { label: '缺貨處理中', icon: 'alert', tone: 'solid', desc: '部分商品缺貨，將依你選擇的缺貨偏好處理。' },
+  cancelled: { label: '已取消／退款', icon: 'x', tone: 'muted', desc: '訂單已取消，款項已全額退回。' }
+};
+const QM = {
+  submitted: { label: '待報價', icon: 'clock', tone: 'line' }, quoted: { label: '已報價', icon: 'yen', tone: 'solid' },
+  accepted: { label: '已接受', icon: 'check', tone: 'tint' }, declined: { label: '已婉拒', icon: 'x', tone: 'muted' },
+  unavailable: { label: '無法代購', icon: 'alert', tone: 'muted' }, expired: { label: '已過期', icon: 'clock', tone: 'muted' }
+};
+const TONES = { solid: ['var(--color-accent-900)', 'var(--color-bg)', 'var(--color-accent-900)'], tint: ['var(--color-accent-100)', 'var(--color-accent-800)', 'var(--color-accent-300)'], line: ['transparent', 'var(--color-text)', 'var(--color-neutral-500)'], muted: ['var(--color-neutral-200)', 'var(--color-neutral-800)', 'var(--color-neutral-300)'] };
+const tone = t => ({ bg: TONES[t][0], fg: TONES[t][1], bd: TONES[t][2] });
+const OOS = { refund: '全部退款', swap: '換同商品其他規格', wait: '等待補貨（最多 30 天）' };
+const SUBS = { no: '不接受', color: '接受同款其他顏色', similar: '接受類似商品' };
+const WANTS = { none: '不急', month: '一個月內', date: '有特定日期' };
+const FAQS = [
+  ['什麼是一補、二補？', '一補是下單時支付的「商品費＋代購費＋日本國內運費」；二補是商品抵台秤重後才確定的「國際運費＋關稅（若有）＋台灣運費」。結帳時會先顯示二補預估金額，讓你心裡有底。'],
+  ['匯率怎麼計算？以哪一天為準？', '以下單當下頁面顯示的匯率為準，並鎖定在訂單中，之後匯率變動不影響已成立的訂單。台幣金額一律四捨五入至整數。'],
+  ['多久會收到商品？', '一般約 2–4 週；限定或預購商品依日本發售日而定。每個階段都可以在「我的訂單」即時查看。'],
+  ['買不到怎麼辦？', '依你結帳時選擇的缺貨偏好處理：全部退款、換同商品其他規格，或等待補貨最多 30 天。'],
+  ['可以退換貨嗎？', '代購商品原則上不接受個人因素退換貨；若收到瑕疵品，請於收貨 3 天內拍照聯繫我們另行處理。'],
+  ['哪些商品不能代購或有寄送限制？', '液體、含鋰電池商品、藥品、肉類製品等可能有寄送限制，商品頁會標示提醒；違禁品與仿冒品一律不代購。']
+];
+const STEPS = [['cart', '下單付一補'], ['bag', '日本購買'], ['plane', '寄回台灣'], ['wallet', '付二補'], ['package', '收到商品']];
+
+function makeProducts(b) {
+  return [
+    { id: 'p1', name: '櫻花保濕化妝水 200ml', brand: '白詩堂 SHIRAUTA', category: '藥妝保養', priceJPY: 3980, jpShippingJPY: 0, weightKg: 0.4, variants: [{ label: '款式', options: ['清爽型', '滋潤型'] }], limitPerPerson: 2, stock: 14, deadline: b + 2 * D + 5 * H + 12 * MIN, listedAt: b - 3 * D, tags: ['熱銷'], shippingNote: '本商品含液體，可能有寄送限制，將以防漏包裝寄送。', description: '以櫻花萃取與玻尿酸調配的日常保濕化妝水，質地清透不黏膩。清爽型適合混合肌，滋潤型適合乾燥肌。日本藥妝店人氣回購款，本團為期間限定櫻花包裝，數量有限。' },
+    { id: 'p2', name: '北海道牛奶糖 12 入', brand: '雪原製菓', category: '零食', priceJPY: 864, jpShippingJPY: 300, weightKg: 0.2, variants: [], limitPerPerson: 5, stock: 40, deadline: b + 2 * D + 5 * H + 12 * MIN, listedAt: b - 2 * D, tags: ['熱銷'], shippingNote: '', description: '使用北海道生乳熬煮的軟式牛奶糖，奶香濃郁、入口即化。單顆獨立包裝，送禮自用都適合。賞味期限約 6 個月。' },
+    { id: 'p3', name: '京都抹茶生巧克力 16 粒', brand: '宇治茶寮', category: '零食', priceJPY: 1620, jpShippingJPY: 400, weightKg: 0.25, variants: [], limitPerPerson: 3, stock: 6, deadline: b + 5 * H + 40 * MIN, listedAt: b - 5 * D, tags: ['限量'], shippingNote: '', description: '選用宇治抹茶製作的生巧克力，微苦回甘。需冷藏保存，將以保冷袋包裝寄送，賞味期限約 30 天。' },
+    { id: 'p4', name: '和紙膠帶 季節限定 5 入組', brand: '紙ノ森', category: '文具雜貨', priceJPY: 1100, jpShippingJPY: 200, weightKg: 0.1, variants: [{ label: '花色', options: ['春櫻', '夏海', '秋楓', '冬雪'] }], limitPerPerson: 4, stock: 30, deadline: b + 4 * D + 3 * H, listedAt: b - 1 * D, tags: [], shippingNote: '', description: '以日本和紙製作的紙膠帶，可手撕、可重複黏貼。每組 5 捲，寬 15mm × 長 7m，四季花色各有特色。' },
+    { id: 'p5', name: '夜空貓 壓克力立牌（會場限定）', brand: '星降工房', category: '動漫周邊', priceJPY: 1650, jpShippingJPY: 300, weightKg: 0.15, variants: [{ label: '角色', options: ['黑貓', '白貓'] }], limitPerPerson: 2, stock: 3, deadline: b + 3 * D + 8 * H, listedAt: b - 6 * H, tags: ['限量'], shippingNote: '', description: '原創插畫「夜空貓」系列的會場限定立牌，高約 12cm，附透明底座。數量非常少，售完即止。' },
+    { id: 'p6', name: '亞麻寬版短袖 T 恤', brand: '凪 NAGI', category: '服飾', priceJPY: 2990, jpShippingJPY: 500, weightKg: 0.3, variants: [{ label: '顏色', options: ['生成', '墨黑', '淺灰'] }, { label: '尺寸', options: ['S', 'M', 'L'] }], limitPerPerson: 2, stock: 20, deadline: b + 6 * D, listedAt: b - 12 * H, tags: [], shippingNote: '', description: '亞麻混紡布料，透氣不悶熱，寬版落肩剪裁。M 號衣長 68cm、胸寬 58cm。建議冷水手洗、平放陰乾。' },
+    { id: 'p7', name: '溫感卸妝膏 90g', brand: '月白 TSUKISHIRO', category: '藥妝保養', priceJPY: 2200, jpShippingJPY: 0, weightKg: 0.15, variants: [], limitPerPerson: 3, stock: 10, deadline: b - 1 * D, listedAt: b - 8 * D, tags: ['熱銷'], shippingNote: '', description: '接觸肌膚後微微溫熱，輕鬆溶解彩妝與毛孔髒污。本團已截團，可透過委託報價詢問下一團。' },
+    { id: 'p8', name: '迷你行動電源 5000mAh', brand: '灯 AKARI', category: '文具雜貨', priceJPY: 3300, jpShippingJPY: 500, weightKg: 0.2, variants: [{ label: '顏色', options: ['米白', '鼠尾草綠'] }], limitPerPerson: 1, stock: 8, deadline: b + 5 * D + 2 * H, listedAt: b - 4 * H, tags: [], shippingNote: '本商品含鋰電池，國際運送有限制，可能需改走海運並延長到貨時間。', description: '手掌大小的行動電源，支援 USB-C 雙向快充。日本雜貨店限定配色。' }
+  ];
+}
+const mkItem = (p, variant, qty) => ({ productId: p.id, name: p.name, category: p.category, variant, qty, priceJPY: p.priceJPY, jpShippingJPY: p.jpShippingJPY, weightKg: p.weightKg });
+function buildOrder(a) {
+  const c = calc1(a.items, CONFIG.rate); const kg = a.items.reduce((s, i) => s + i.weightKg * i.qty, 0);
+  return { id: a.id, createdAt: a.createdAt, items: a.items, rate: CONFIG.rate,
+    payment1: { amount: c.total, sub: c.sub, fee: c.fee, jp: c.jp, paid: false, paidAt: null },
+    payment2: { estimate: intlFee(kg) + twShip(a.delivery.method), estKg: kg, amount: null, paid: false, paidAt: null },
+    delivery: a.delivery, contact: a.contact, oosPreference: a.oos, status: 'pending_payment_1',
+    history: [{ status: 'pending_payment_1', at: a.createdAt, note: '訂單成立' }], source: a.source || 'shop', quoteId: a.quoteId || null };
+}
+function pushSt(o, status, at, note) {
+  o.status = status; o.history.push({ status, at, note: note || '' });
+  if (status === 'paid_1') { o.payment1.paid = true; o.payment1.paidAt = at; }
+}
+function settle2(o, actualKg) {
+  const intl = intlFee(actualKg), tax = o.payment1.sub > CONFIG.taxFreeLimit ? Math.round((o.payment1.sub - CONFIG.taxFreeLimit) * CONFIG.taxRate) : 0, tw = twShip(o.delivery.method);
+  Object.assign(o.payment2, { actualKg: Math.round(actualKg * 100) / 100, billKg: ceilHalf(actualKg), intl, tax, tw, amount: intl + tax + tw });
+}
+function seedOrders(b, P) {
+  const contact = { name: '林小美', phone: '0912-345-678', email: 'demo@hiyori.tw', line: 'xiaomei_demo' };
+  const o1 = buildOrder({ id: 'HY' + ymd(b - 4 * D) + '0001', createdAt: b - 4 * D, items: [mkItem(P[1], '', 2), mkItem(P[4], '角色：黑貓', 1)], delivery: { method: 'cvs', store: '7-ELEVEN 台北府前門市', address: '' }, contact, oos: 'refund' });
+  pushSt(o1, 'paid_1', b - 4 * D + 3 * H, '已確認收款'); pushSt(o1, 'purchasing', b - 3 * D); pushSt(o1, 'arrived_jp', b - 2 * D + 4 * H); pushSt(o1, 'shipping_intl', b - 1 * D + 2 * H);
+  const o2 = buildOrder({ id: 'HY' + ymd(b - 8 * D) + '0001', createdAt: b - 8 * D, items: [mkItem(P[0], '款式：清爽型', 1), mkItem(P[3], '花色：春櫻', 1)], delivery: { method: 'cvs', store: '全家 台中公益店', address: '' }, contact, oos: 'swap' });
+  pushSt(o2, 'paid_1', b - 8 * D + 5 * H, '已確認收款'); pushSt(o2, 'purchasing', b - 7 * D); pushSt(o2, 'arrived_jp', b - 5 * D); pushSt(o2, 'shipping_intl', b - 3 * D);
+  settle2(o2, 0.58); pushSt(o2, 'arrived_tw', b - 6 * H, '實重 0.58kg'); pushSt(o2, 'pending_payment_2', b - 6 * H + MIN);
+  return [o1, o2];
+}
+function seedQuotes(b) {
+  const o = { priceJPY: 2750, jpShippingJPY: 500, weightKg: 0.45, rate: CONFIG.rate }; const c = calc1([{ ...o, qty: 1 }], o.rate);
+  return [{ id: 'Q' + ymd(b - D) + '0001', createdAt: b - D, images: [], url: 'https://example.jp/shop/item/2231', name: '森之郵局 限定琺瑯馬克杯', spec: '櫻花粉 / 350ml', qty: 1, budgetTWD: 900, substitute: 'color', wantBy: 'month', date: '', note: '看到推特說只在京都店販售，想要粉色的，謝謝！', status: 'quoted', quotedAt: b - 2 * H,
+    offer: { ...o, total1: c.total, estimate2: intlFee(0.45) + twShip('cvs'), expiresAt: b + 36 * H, note: '目前只剩粉色，已確認有貨。' } }];
+}
+function parseRoute() {
+  const p = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean); const a = p[0], b = p[1];
+  if (a === 'product') return { name: 'product', id: b };
+  if (a === 'cart') return { name: 'cart' };
+  if (a === 'checkout') return { name: 'checkout' };
+  if (a === 'success') return { name: 'success', id: b };
+  if (a === 'quote') return { name: 'quote', tab: b === 'list' ? 'list' : 'new' };
+  if (a === 'quotes' && b) return { name: 'quoteDetail', id: b };
+  if (a === 'orders') return b ? { name: 'orderDetail', id: b } : { name: 'orders' };
+  if (a === 'info') return { name: 'info' };
+  return { name: 'home' };
+}
+const emptyDraft = () => ({ images: [], url: '', name: '', spec: '', qty: 1, budget: '', substitute: '', wantBy: 'none', date: '', note: '' });
+const coFrom = p => ({ name: p?.name || '', phone: p?.phone || '', email: p?.email || '', method: p?.method || 'cvs', store: p?.store || '', address: p?.address || '', line: p?.line || '', oos: '', agree: false });
+const freshPd = () => ({ sel: {}, qty: 1, idx: 0, desc: false, rate: false });
+const compress = f => new Promise((res, rej) => { const r = new FileReader(); r.onerror = rej; r.onload = () => { const im = new Image(); im.onerror = rej; im.onload = () => { const s = Math.min(1, 800 / im.width); const c = document.createElement('canvas'); c.width = Math.round(im.width * s); c.height = Math.round(im.height * s); c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', 0.72)); }; im.src = r.result; }; r.readAsDataURL(f); });
+const chip = on => ({ bd: on ? 'var(--color-accent)' : 'var(--color-divider)', bg: on ? 'var(--color-accent)' : 'transparent', fg: on ? 'var(--color-bg)' : 'var(--color-text)', pressed: on ? 'true' : 'false' });
+const stepper = (qty, min, max, set) => ({ qty, dec: () => set(Math.max(min, qty - 1)), inc: () => set(Math.min(max, qty + 1)), decDis: qty <= min, incDis: qty >= max, decOp: qty <= min ? 0.35 : 1, incOp: qty >= max ? 0.35 : 1 });
+
+class Component extends DCLogic {
+  state = this.boot();
+  fileRef = React.createRef();
+
+  boot() {
+    let seed = ld(LS.seed, null); const fresh = !seed || !localStorage.getItem(LS.orders);
+    if (fresh) { seed = Date.now(); sv(LS.seed, seed); }
+    this.products = makeProducts(seed);
+    if (fresh) { sv(LS.orders, seedOrders(seed, this.products)); sv(LS.quotes, seedQuotes(seed)); sv(LS.cart, []); }
+    const profile = ld(LS.profile, null);
+    return { route: parseRoute(), cart: ld(LS.cart, []), orders: ld(LS.orders, []), quotes: ld(LS.quotes, []), profile,
+      qf: { ...emptyDraft(), ...(ld(LS.draft, null) || {}) }, qErr: {}, imgErr: '', dragOver: false, qSubmitting: false, quoteDone: null, quoteFilter: 'all',
+      cat: '全部', sort: 'deadline', pd: freshPd(), co: coFrom(profile), coErr: {}, coSubmitting: false,
+      orderFilter: 'all', sheet: null, dialog: null, toast: null, demoOpen: false, faq: 0,
+      calc: { jpy: '3980', qty: 1, kg: '0.4', method: 'cvs' }, bump: 0, reqOpen: false, now: Date.now() };
+  }
+  componentDidMount() {
+    this._hc = () => { const route = parseRoute(); this.setState(s => ({ route, pd: route.name === 'product' ? freshPd() : s.pd, reqOpen: false, demoOpen: false, quoteDone: route.name === 'quote' ? s.quoteDone : null, coErr: {} })); window.scrollTo(0, 0); };
+    window.addEventListener('hashchange', this._hc);
+    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._hc); clearInterval(this._t); }
+
+  go(h) { if (location.hash === h) this._hc(); else location.hash = h; }
+  prod(id) { return this.products.find(p => p.id === id); }
+  closed(p, now) { return p.deadline <= now || p.stock <= 0; }
+  setCart(cart) { sv(LS.cart, cart); this.setState({ cart }); }
+  setOrders(fn) { this.setState(s => { const orders = fn(s.orders); sv(LS.orders, orders); return { orders }; }); }
+  setQuotes(fn) { this.setState(s => { const quotes = fn(s.quotes); sv(LS.quotes, quotes); return { quotes }; }); }
+  updOrder(id, fn) { this.setOrders(os => os.map(o => o.id === id ? fn(JSON.parse(JSON.stringify(o))) : o)); }
+  updQuote(id, fn) { this.setQuotes(qs => qs.map(q => q.id === id ? fn(JSON.parse(JSON.stringify(q))) : q)); }
+  toast(msg, undo) { const k = Date.now() + Math.random(); this.setState({ toast: { msg, undo, k } }); setTimeout(() => { if (this.state.toast && this.state.toast.k === k) this.setState({ toast: null }); }, undo ? 4000 : 2500); }
+  newId(prefix, list) { const d = ymd(Date.now()); const n = list.filter(x => x.id.startsWith(prefix + d)).length + 1; return prefix + d + String(n).padStart(4, '0'); }
+  scrollToId(id) { setTimeout(() => { const el = document.getElementById(id); if (!el) return; window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' }); const f = el.querySelector('input,textarea'); if (f) f.focus({ preventScroll: true }); }, 30); }
+  cartQtyOf(pid, exceptKey) { return this.state.cart.filter(c => c.productId === pid && c.key !== exceptKey).reduce((a, c) => a + c.qty, 0); }
+  qStatus(q, now) { return q.status === 'quoted' && q.offer && q.offer.expiresAt <= now ? 'expired' : q.status; }
+  coverOf(o) { if (o.source !== 'quote') return null; const q = this.state.quotes.find(x => x.id === o.quoteId); return q && q.images && q.images[0] || null; }
+  thumb(o, it, s) { const src = this.coverOf(o); return { hasImg: !!src, noImg: !src, src, alt: it.name, icon: icon(CAT_ICON[it.category] || 'package', s) }; }
+
+  // ---------- actions ----------
+  openPay(id) { this.setState({ sheet: { type: 'pay', orderId: id, last5: '', err: '', loading: false } }); }
+  submitPay() {
+    const sh = this.state.sheet; if (!/^\d{5}$/.test(sh.last5)) { this.setState({ sheet: { ...sh, err: '請輸入 5 位數字' } }); return; }
+    this.setState({ sheet: { ...sh, loading: true, err: '' } });
+    setTimeout(() => {
+      const now = Date.now(); let msg = '';
+      this.updOrder(sh.orderId, o => {
+        if (o.status === 'pending_payment_1') { pushSt(o, 'paid_1', now, `已收到轉帳（末五碼 ${sh.last5}）`); msg = '已通知代購者確認一補款項'; }
+        else if (o.status === 'pending_payment_2') { o.payment2.paid = true; o.payment2.paidAt = now; pushSt(o, 'shipped_tw', now, `已收到二補（末五碼 ${sh.last5}）並寄出`); msg = '已收到二補，商品從台灣寄出囉'; }
+        return o;
+      });
+      this.setState({ sheet: null }); this.toast(msg || '付款完成');
+    }, 600);
+  }
+  advanceOrder(id) {
+    const o0 = this.state.orders.find(o => o.id === id); if (!o0) return;
+    if (o0.status === 'completed' || o0.status === 'cancelled') { this.toast('這筆訂單已結束，無法再推進'); return; }
+    let msg = '';
+    this.updOrder(id, o => {
+      const now = Date.now();
+      if (o.status === 'out_of_stock') {
+        if (o.oosPreference === 'refund') { pushSt(o, 'cancelled', now, '缺貨，已全額退款'); msg = '已模擬退款，訂單取消'; }
+        else { pushSt(o, o.prevStatus || 'purchasing', now, o.oosPreference === 'swap' ? '已換成其他規格，繼續代購' : '補貨到貨，繼續代購'); msg = '缺貨已處理，繼續代購'; }
+        return o;
+      }
+      const i = ORDER_FLOW.indexOf(o.status); const next = ORDER_FLOW[i + 1];
+      if (o.status === 'pending_payment_2') { o.payment2.paid = true; o.payment2.paidAt = now; }
+      if (next === 'arrived_tw') {
+        const kg = o.items.reduce((s, it) => s + it.weightKg * it.qty, 0) * (0.92 + Math.random() * 0.25);
+        settle2(o, kg); pushSt(o, 'arrived_tw', now, `實重 ${o.payment2.actualKg}kg`); pushSt(o, 'pending_payment_2', now + 1000, '');
+        msg = `已抵台秤重，二補 ${NT(o.payment2.amount)}`;
+      } else { pushSt(o, next, now, ''); msg = '狀態已推進：' + OM[next].label; }
+      return o;
+    });
+    this.toast(msg);
+  }
+  simOOS(id) {
+    const o0 = this.state.orders.find(o => o.id === id);
+    if (!o0 || ['completed', 'cancelled', 'out_of_stock', 'shipped_tw'].includes(o0.status)) { this.toast('此狀態無法模擬缺貨'); return; }
+    this.updOrder(id, o => { o.prevStatus = o.status; pushSt(o, 'out_of_stock', Date.now(), '代購者回報缺貨'); return o; });
+    this.toast('已模擬缺貨');
+  }
+  simQuote(id) {
+    const q = this.state.quotes.find(x => x.id === id); if (!q) return;
+    const base = q.budgetTWD ? Math.round(q.budgetTWD / CONFIG.rate * 0.7 / 10) * 10 : [1980, 2750, 3300, 4180, 5500][Math.floor(Math.random() * 5)];
+    const o = { priceJPY: Math.max(500, base), jpShippingJPY: [0, 300, 500][Math.floor(Math.random() * 3)], weightKg: 0.35, rate: CONFIG.rate };
+    const c = calc1([{ ...o, qty: q.qty }], o.rate);
+    this.updQuote(id, x => { x.status = 'quoted'; x.quotedAt = Date.now(); x.offer = { ...o, total1: c.total, estimate2: intlFee(o.weightKg * q.qty) + twShip('cvs'), expiresAt: Date.now() + CONFIG.quoteValidHours * H, note: q.substitute === 'color' ? '原色已售完，目前有粉色與白色可選，已確認有貨。' : '已向日本店家確認有貨，接受後即可為你下單。' }; return x; });
+    this.toast('代購者已回覆報價（48 小時內有效）');
+  }
+  simUnavailable(id) { this.updQuote(id, x => { x.status = 'unavailable'; x.unavailableReason = '此商品僅限日本店頭現場販售且已售完，無法代購，抱歉！'; return x; }); this.toast('已模擬：無法代購'); }
+  acceptQuote(q) {
+    const prof = this.state.profile, o = q.offer;
+    const item = { productId: null, name: q.name, category: '委託', variant: q.spec || '', qty: q.qty, priceJPY: o.priceJPY, jpShippingJPY: o.jpShippingJPY, weightKg: o.weightKg };
+    const order = buildOrder({ id: this.newId('HY', this.state.orders), createdAt: Date.now(), items: [item],
+      delivery: prof ? { method: prof.method, store: prof.store, address: prof.address } : { method: 'cvs', store: '待確認（代購者將與你聯繫）', address: '' },
+      contact: prof ? { name: prof.name, phone: prof.phone, email: prof.email, line: prof.line } : { name: '待補填', phone: '', email: '', line: '' },
+      oos: q.substitute === 'no' ? 'refund' : 'swap', source: 'quote', quoteId: q.id });
+    this.setOrders(os => [order, ...os]);
+    this.updQuote(q.id, x => { x.status = 'accepted'; x.orderId = order.id; return x; });
+    this.openPay(order.id); this.toast('已接受報價，訂單已建立');
+  }
+  declineQuote(q) {
+    this.setState({ dialog: { title: '婉拒這份報價？', body: '婉拒後此報價將結束，可以再重新委託。請選擇原因：', reasons: ['價格超出預算', '已在別處購買', '暫時不需要了', '其他原因'], reason: '', okLabel: '確認婉拒', needReason: true,
+      onOk: r => { this.updQuote(q.id, x => { x.status = 'declined'; x.declineReason = r; return x; }); this.toast('已婉拒報價'); } } });
+  }
+  reask(q) { const qf = { ...emptyDraft(), images: q.images || [], url: q.url, name: q.name, spec: q.spec, qty: q.qty, budget: q.budgetTWD ? String(q.budgetTWD) : '', substitute: q.substitute, wantBy: q.wantBy, date: q.date, note: q.note }; sv(LS.draft, qf); this.setState({ qf, qErr: {}, quoteDone: null }); this.go('#/quote'); this.toast('已帶入原委託內容'); }
+  resetAll() {
+    this.setState({ demoOpen: false, dialog: { title: '重置所有資料？', body: '將清空購物車、訂單、報價與草稿，並重新載入示範資料。此動作無法復原。', okLabel: '確認重置',
+      onOk: () => { Object.values(LS).forEach(k => localStorage.removeItem(k)); location.hash = '#/'; location.reload(); } } });
+  }
+  setQf(k, v) { this.setState(s => { const qf = { ...s.qf, [k]: v }; sv(LS.draft, qf); return { qf, qErr: { ...s.qErr, [k]: '' } }; }); }
+  async addFiles(list) {
+    const files = Array.from(list || []); if (!files.length) return;
+    const imgs = [...this.state.qf.images]; const errs = [];
+    for (const f of files) {
+      if (!f.type.startsWith('image/')) { errs.push(`「${f.name}」不是圖片檔`); continue; }
+      if (f.size > 5 * 1024 * 1024) { errs.push(`「${f.name}」超過 5MB`); continue; }
+      if (imgs.length >= 5) { errs.push('最多 5 張，已略過多出的圖片'); break; }
+      try { imgs.push(await compress(f)); } catch (e) { errs.push(`「${f.name}」無法讀取`); }
+    }
+    this.setQf('images', imgs); this.setState({ imgErr: errs.join('；') });
+  }
+  submitQuote() {
+    const f = this.state.qf, e = {};
+    if (!f.images.length) e.images = '請至少上傳 1 張商品圖片';
+    if (!f.name.trim()) e.name = '請填寫商品名稱或描述';
+    if (f.budget && !(Number(f.budget) > 0)) e.budget = '請輸入正確的金額';
+    if (!f.substitute) e.substitute = '請選擇是否接受替代品';
+    if (f.wantBy === 'date' && !f.date) e.date = '請選擇希望到貨日期';
+    const order = ['images', 'name', 'budget', 'substitute', 'date'], first = order.find(k => e[k]);
+    if (first) { this.setState({ qErr: e }); this.scrollToId({ images: 'q-images', name: 'q-name', budget: 'q-budget', substitute: 'q-sub', date: 'q-date' }[first]); return; }
+    this.setState({ qSubmitting: true });
+    setTimeout(() => {
+      const q = { id: this.newId('Q', this.state.quotes), createdAt: Date.now(), images: f.images, url: f.url.trim(), name: f.name.trim(), spec: f.spec.trim(), qty: f.qty, budgetTWD: f.budget ? Number(f.budget) : null, substitute: f.substitute, wantBy: f.wantBy, date: f.date, note: f.note.trim(), status: 'submitted', offer: null };
+      this.setQuotes(qs => [q, ...qs]);
+      localStorage.removeItem(LS.draft);
+      this.setState({ qSubmitting: false, quoteDone: q.id, qf: emptyDraft(), qErr: {}, imgErr: '' }); window.scrollTo(0, 0);
+    }, 600);
+  }
+  setCo(k, v) { this.setState(s => ({ co: { ...s.co, [k]: v }, coErr: { ...s.coErr, [k]: '' } })); }
+  submitCheckout(lines, c, est) {
+    const v = this.state.co, e = {};
+    if (!v.name.trim()) e.name = '請填寫收件人姓名';
+    if (!/^09\d{2}-?\d{3}-?\d{3}$/.test(v.phone.trim())) e.phone = '請輸入台灣手機格式，例如 0912-345-678';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim())) e.email = '請輸入正確的 Email';
+    if (v.method === 'cvs' && !v.store.trim()) e.store = '請填寫取貨門市名稱';
+    if (v.method === 'home' && !v.address.trim()) e.address = '請填寫收件地址';
+    if (!v.oos) e.oos = '請選擇缺貨時的處理方式';
+    if (!v.agree) e.agree = '請先閱讀並勾選同意代購須知';
+    const first = ['name', 'phone', 'email', 'store', 'address', 'oos', 'agree'].find(k => e[k]);
+    if (first) { this.setState({ coErr: e }); this.scrollToId('co-' + first); return; }
+    this.setState({ coSubmitting: true });
+    setTimeout(() => {
+      const now = Date.now(); const phone = v.phone.replace(/\D/g, '').replace(/^(\d{4})(\d{3})(\d{3})$/, '$1-$2-$3');
+      const items = lines.map(l => mkItem(l.p, l.c.variant, l.c.qty));
+      const order = buildOrder({ id: this.newId('HY', this.state.orders), createdAt: now, items, delivery: { method: v.method, store: v.method === 'cvs' ? v.store.trim() : '', address: v.method === 'home' ? v.address.trim() : '' }, contact: { name: v.name.trim(), phone, email: v.email.trim(), line: v.line.trim() }, oos: v.oos });
+      const profile = { name: v.name.trim(), phone, email: v.email.trim(), method: v.method, store: v.store, address: v.address, line: v.line };
+      sv(LS.profile, profile); this.setOrders(os => [order, ...os]);
+      const keys = new Set(lines.map(l => l.c.key)); this.setCart(this.state.cart.filter(c => !keys.has(c.key)));
+      this.setState({ coSubmitting: false, profile, co: { ...coFrom(profile) } });
+      location.replace('#/success/' + order.id);
+    }, 600);
+  }
+
+  // ---------- view models ----------
+  vmHome(now) {
+    const s = this.state;
+    const reminders = [];
+    const pp2 = s.orders.filter(o => o.status === 'pending_payment_2'), pp1 = s.orders.filter(o => o.status === 'pending_payment_1');
+    if (pp2.length) reminders.push({ text: `你有 ${pp2.length} 筆訂單待付二補`, href: pp2.length === 1 ? '#/orders/' + pp2[0].id : '#/orders', icon: icon('wallet', 20) });
+    if (pp1.length) reminders.push({ text: `你有 ${pp1.length} 筆訂單待付一補`, href: pp1.length === 1 ? '#/orders/' + pp1[0].id : '#/orders', icon: icon('wallet', 20) });
+    const qd = s.quotes.filter(q => this.qStatus(q, now) === 'quoted');
+    if (qd.length) reminders.push({ text: `你有 ${qd.length} 筆報價待回覆`, href: qd.length === 1 ? '#/quotes/' + qd[0].id : '#/quote/list', icon: icon('yen', 20) });
+    let list = this.products.filter(p => s.cat === '全部' || p.category === s.cat);
+    list.sort((a, b) => { const ca = this.closed(a, now), cb = this.closed(b, now); if (ca !== cb) return ca ? 1 : -1; if (s.sort === 'newest') return b.listedAt - a.listedAt; if (s.sort === 'price') return a.priceJPY - b.priceJPY; return a.deadline - b.deadline; });
+    const TAG = { closed: ['var(--color-neutral-800)', 'var(--color-bg)', 'var(--color-neutral-800)'], soon: ['var(--color-accent-900)', 'var(--color-bg)', 'var(--color-accent-900)'], '熱銷': ['var(--color-accent-100)', 'var(--color-accent-800)', 'var(--color-accent-300)'], '限量': ['var(--color-bg)', 'var(--color-text)', 'var(--color-text)'] };
+    const productCards = list.map(p => {
+      const left = p.deadline - now, closed = this.closed(p, now), soon = !closed && left < D;
+      const tag = closed ? ['已截團', 'closed'] : soon ? ['即將截團', 'soon'] : p.tags[0] ? [p.tags[0], p.tags[0]] : null; const ts = tag ? TAG[tag[1]] : [];
+      return { href: '#/product/' + p.id, icon: icon(CAT_ICON[p.category], 44), fig: 'FIG.' + p.id.slice(1).padStart(2, '0'), hasTag: !!tag, tag: tag ? tag[0] : '', tagBg: ts[0], tagFg: ts[1], tagBd: ts[2],
+        name: p.name, yen: JP(p.priceJPY), nt: NT(twd(p.priceJPY)), filter: closed ? 'grayscale(1)' : 'none', op: closed ? 0.55 : 1,
+        dl: closed ? '已截團' : soon ? '剩 ' + cd(left) : '截團 ' + fmtMD(p.deadline), dlColor: soon ? 'var(--color-accent-800)' : 'var(--color-neutral-700)', dlWeight: soon ? 700 : 400 };
+    });
+    return {
+      hasReminders: reminders.length > 0, reminders,
+      bannerCd: cd(this.products[0].deadline - now), bannerGo: () => { this.setState({ cat: '藥妝保養', sort: 'deadline' }); window.scrollTo({ top: 360, behavior: 'smooth' }); },
+      cats: CATS.map(c => ({ label: c, on: () => this.setState({ cat: c }), ...chip(s.cat === c) })),
+      sorts: [['deadline', '即將截團'], ['newest', '最新上架'], ['price', '價格低到高']].map(([k, l]) => ({ label: l, checked: s.sort === k, on: () => this.setState({ sort: k }) })),
+      productCount: `${list.length} 件商品`, productCards, hasProducts: list.length > 0, noProducts: list.length === 0
+    };
+  }
+  vmProduct(now) {
+    const s = this.state, p = this.prod(s.route.id); if (!p) return { ok: false, missing: true };
+    const pd = s.pd, left = p.deadline - now, closed = this.closed(p, now), soon = !closed && left < D;
+    const inCart = this.cartQtyOf(p.id); const maxQ = Math.max(0, Math.min(p.limitPerPerson, p.stock) - inCart);
+    const qty = Math.max(1, Math.min(pd.qty, Math.max(1, maxQ)));
+    const needVar = p.variants.some(v => !pd.sel[v.label]);
+    const setPd = o => this.setState(st => ({ pd: { ...st.pd, ...o } }));
+    const unit = twd(p.priceJPY);
+    return {
+      ok: true, missing: false, brand: p.brand, category: p.category, name: p.name, yen: JP(p.priceJPY), nt: NT(unit), filter: closed ? 'grayscale(1)' : 'none',
+      slides: ['正面', '包裝', '細節'].map((l, i) => ({ label: `FIG.${p.id.slice(1).padStart(2, '0')}-${i + 1} · ${l}`, alt: `${p.name}（${l}）`, icon: icon(CAT_ICON[p.category], 88, 1.2), angle: ['135deg', '45deg', '90deg'][i] })),
+      dots: [0, 1, 2].map(i => ({ w: i === pd.idx ? '18px' : '6px', bg: i === pd.idx ? 'var(--color-accent-900)' : 'var(--color-neutral-400)' })),
+      onScroll: e => { const el = e.currentTarget; const i = Math.round(el.scrollLeft / el.clientWidth); if (i !== this.state.pd.idx) setPd({ idx: i }); },
+      rateOpen: pd.rate, rateExp: pd.rate ? 'true' : 'false', toggleRate: () => setPd({ rate: !pd.rate }),
+      rateText: `今日匯率 ¥1 = NT$${CONFIG.rate}（更新於 ${CONFIG.rateUpdatedAt}）。${JP(p.priceJPY)} × ${CONFIG.rate} ≈ ${NT(unit)}，四捨五入至整數，並於下單當下鎖定。一補另加代購費 10%（最低 NT$50）與日本國內運費 ${JP(p.jpShippingJPY)}。`,
+      cdLabel: closed ? '狀態' : '截團倒數', cd: closed ? '已截團' : cd(left), cdColor: soon ? 'var(--color-accent-800)' : 'var(--color-text)',
+      limit: `${p.limitPerPerson} 件`, stock: closed ? '—' : `${p.stock} 份`,
+      hasNote: !!p.shippingNote, note: p.shippingNote,
+      groups: p.variants.map(v => ({ label: v.label, hint: pd.sel[v.label] ? '已選：' + pd.sel[v.label] : '請選擇', opts: v.options.map(o => { const on = pd.sel[v.label] === o; return { label: o, on: () => setPd({ sel: { ...pd.sel, [v.label]: o } }), ...chip(on) }; }) })),
+      step: stepper(qty, 1, Math.max(1, maxQ), q => setPd({ qty: q })),
+      limitNote: `每人限購 ${p.limitPerPerson} 件` + (inCart ? `（購物車已有 ${inCart} 件）` : ''),
+      desc: p.description, clamp: pd.desc ? 'unset' : '3', descLabel: pd.desc ? '收合' : '展開全部', toggleDesc: () => setPd({ desc: !pd.desc }),
+      subtotal: NT(unit * qty), subJP: `${JP(p.priceJPY)} × ${qty}`,
+      disabled: closed || needVar || maxQ <= 0,
+      btnLabel: closed ? '已截團' : maxQ <= 0 ? '已達限購數量' : needVar ? '請選擇規格' : '加入購物車',
+      add: () => {
+        const variant = p.variants.map(v => v.label + '：' + pd.sel[v.label]).join(' / '); const key = p.id + '|' + variant;
+        const cart = this.state.cart; const ex = cart.find(c => c.key === key);
+        this.setCart(ex ? cart.map(c => c.key === key ? { ...c, qty: c.qty + qty } : c) : [...cart, { key, productId: p.id, variant, qty }]);
+        this.setState(st => ({ bump: st.bump + 1, pd: { ...st.pd, qty: 1 } })); this.toast('已加入購物車');
+      }
+    };
+  }
+  cartLines(now) {
+    return this.state.cart.map(c => ({ c, p: this.prod(c.productId) })).filter(l => l.p).map(l => ({ ...l, isClosed: this.closed(l.p, now) }));
+  }
+  vmCart(now) {
+    const lines = this.cartLines(now), open = lines.filter(l => !l.isClosed);
+    const c = calc1(open.map(l => ({ priceJPY: l.p.priceJPY, jpShippingJPY: l.p.jpShippingJPY, qty: l.c.qty })));
+    const kg = open.reduce((a, l) => a + l.p.weightKg * l.c.qty, 0);
+    return {
+      empty: lines.length === 0, has: lines.length > 0, noOpen: open.length === 0,
+      lines: lines.map(({ c: ci_, p, isClosed }) => {
+        const max = Math.max(1, Math.min(p.limitPerPerson, p.stock) - this.cartQtyOf(p.id, ci_.key));
+        return { href: '#/product/' + p.id, name: p.name, variant: ci_.variant, hasVariant: !!ci_.variant, icon: icon(CAT_ICON[p.category], 30), filter: isClosed ? 'grayscale(1)' : 'none', op: isClosed ? 0.6 : 1, closed: isClosed,
+          sub: NT(twd(p.priceJPY) * ci_.qty), unit: `${JP(p.priceJPY)} × ${ci_.qty}`, atLimit: ci_.qty >= max && !isClosed, limitNote: `每人限購 ${p.limitPerPerson} 件`,
+          step: stepper(ci_.qty, 1, max, q => this.setCart(this.state.cart.map(x => x.key === ci_.key ? { ...x, qty: q } : x))),
+          remove: () => { const prev = this.state.cart; this.setCart(prev.filter(x => x.key !== ci_.key)); this.toast('已刪除商品', () => { this.setCart(prev); this.setState({ toast: null }); }); } };
+      }),
+      sum: { sub: NT(c.sub), fee: NT(c.fee), jp: NT(c.jp), total: NT(c.total), est2: NT(open.length ? intlFee(kg) + twShip('cvs') : 0) },
+      checkout: () => this.go('#/checkout')
+    };
+  }
+  vmCheckout(now) {
+    const s = this.state, v = s.co, err = s.coErr;
+    const open = this.cartLines(now).filter(l => !l.isClosed);
+    if (!open.length) return { empty: true, ok: false, v, on: {}, err: {}, bd: {}, fee: {} };
+    const c = calc1(open.map(l => ({ priceJPY: l.p.priceJPY, jpShippingJPY: l.p.jpShippingJPY, qty: l.c.qty })));
+    const kg = open.reduce((a, l) => a + l.p.weightKg * l.c.qty, 0), intl = intlFee(kg), tw = twShip(v.method), hasTax = c.sub > CONFIG.taxFreeLimit;
+    const keys = ['name', 'phone', 'email', 'store', 'address', 'line'];
+    const on = {}; keys.forEach(k => on[k] = e => this.setCo(k, e.target.value));
+    const bd = {}; ['name', 'phone', 'email', 'store', 'address', 'oos'].forEach(k => bd[k] = err[k] ? 'var(--color-text)' : 'var(--color-divider)');
+    return {
+      empty: false, ok: true, v, on, bd, err: { name: err.name || '', phone: err.phone || '', email: err.email || '', store: err.store || '', address: err.address || '', oos: err.oos || '', agree: err.agree || '' },
+      methods: [['cvs', '超商店到店', 'store'], ['home', '宅配到府', 'truck']].map(([k, l, ic]) => { const sel = v.method === k; return { label: l, icon: icon(ic, 18), fee: NT(twShip(k)), sel, pressed: sel ? 'true' : 'false', on: () => this.setCo('method', k), bw: sel ? '2px' : '1px', bd: sel ? 'var(--color-accent)' : 'var(--color-divider)', bg: sel ? 'var(--color-accent-100)' : 'transparent' }; }),
+      isCvs: v.method === 'cvs', isHome: v.method === 'home',
+      oosOpts: [['refund', '缺貨商品直接退回款項'], ['swap', '由代購者聯繫確認後替換規格'], ['wait', '最多等待 30 天，逾期自動退款']].map(([k, d]) => ({ label: OOS[k].replace('（最多 30 天）', ''), desc: d, checked: v.oos === k, on: () => this.setCo('oos', k), bg: v.oos === k ? 'var(--color-accent-100)' : 'transparent' })),
+      fee: { sub: NT(c.sub), fee: NT(c.fee), jp: NT(c.jp), total: NT(c.total), kg: `${ceilHalf(kg)}kg`, intl: NT(intl), tw: NT(tw), tax: hasTax ? '另計' : NT(0), est2: NT(intl + tw), hasTax, grand: '≈ ' + NT(c.total + intl + tw) },
+      toggleAgree: e => this.setCo('agree', e.target.checked), openTerms: e => { e.preventDefault(); this.setState({ sheet: { type: 'terms' } }); },
+      submitting: s.coSubmitting, submit: () => this.submitCheckout(open, c, intl + tw)
+    };
+  }
+  vmQuote(now) {
+    const s = this.state, f = s.qf, e = s.qErr, tab = s.route.tab || 'new';
+    const quotedN = s.quotes.filter(q => this.qStatus(q, now) === 'quoted').length;
+    const qTabs = [['new', '新增委託', '#/quote'], ['list', '我的報價', '#/quote/list']].map(([k, l, h]) => { const on = tab === k; return { label: l, pressed: on ? 'true' : 'false', on: () => this.go(h), bg: on ? 'var(--color-accent)' : 'transparent', fg: on ? 'var(--color-bg)' : 'var(--color-text)', hasBadge: k === 'list' && quotedN > 0, badge: quotedN, badgeBg: on ? 'var(--color-bg)' : 'var(--color-accent-900)', badgeFg: on ? 'var(--color-accent-900)' : 'var(--color-bg)' }; });
+    const on = {}; ['url', 'name', 'spec', 'budget', 'date'].forEach(k => on[k] = ev => this.setQf(k, ev.target.value)); on.note = ev => this.setQf('note', ev.target.value.slice(0, 300));
+    const bd = {}; ['name', 'budget', 'substitute', 'date'].forEach(k => bd[k] = e[k] ? 'var(--color-text)' : 'var(--color-divider)');
+    const ENDED = ['accepted', 'declined', 'unavailable', 'expired'];
+    const flt = s.quoteFilter;
+    let list = s.quotes.map(q => ({ q, st: this.qStatus(q, now) }));
+    list = list.filter(x => flt === 'all' || (flt === 'ended' ? ENDED.includes(x.st) : x.st === flt));
+    list.sort((a, b) => (b.st === 'quoted') - (a.st === 'quoted') || b.q.createdAt - a.q.createdAt);
+    return {
+      qTabs,
+      q: {
+        showDone: tab === 'new' && !!s.quoteDone, showForm: tab === 'new' && !s.quoteDone, showList: tab === 'list',
+        again: () => this.setState({ quoteDone: null }), viewList: () => { this.setState({ quoteDone: null }); this.go('#/quote/list'); },
+        pick: () => this.fileRef.current && this.fileRef.current.click(),
+        dragOver: ev => { ev.preventDefault(); if (!this.state.dragOver) this.setState({ dragOver: true }); },
+        dragLeave: () => this.setState({ dragOver: false }),
+        drop: ev => { ev.preventDefault(); this.setState({ dragOver: false }); this.addFiles(ev.dataTransfer.files); },
+        onFile: ev => { this.addFiles(ev.target.files); ev.target.value = ''; },
+        dropBd: s.dragOver ? 'var(--color-accent)' : e.images ? 'var(--color-text)' : 'var(--color-neutral-400)', dropBg: s.dragOver ? 'var(--color-accent-100)' : 'transparent',
+        dropText: s.dragOver ? '放開以上傳' : '點擊或拖曳圖片到這裡', imgCount: `已選 ${f.images.length} / 5 張`,
+        hasThumbs: f.images.length > 0, thumbs: f.images.map((src, i) => ({ src, alt: `商品圖片 ${i + 1}`, cover: i === 0, rm: ev => { ev.stopPropagation(); this.setQf('images', this.state.qf.images.filter((_, j) => j !== i)); } })),
+        imgErr: s.imgErr, err: { images: e.images || '', name: e.name || '', budget: e.budget || '', substitute: e.substitute || '', date: e.date || '' },
+        v: f, on, bd, step: stepper(f.qty, 1, 99, n => this.setQf('qty', n)),
+        subOpts: Object.keys(SUBS).map(k => ({ label: SUBS[k], checked: f.substitute === k, on: () => this.setQf('substitute', k), bg: f.substitute === k ? 'var(--color-accent-100)' : 'transparent' })),
+        wantOpts: Object.keys(WANTS).map(k => ({ label: WANTS[k], checked: f.wantBy === k, on: () => this.setQf('wantBy', k) })),
+        isDate: f.wantBy === 'date', noteCount: `${f.note.length} / 300`,
+        submit: () => this.submitQuote(), submitting: s.qSubmitting,
+        filters: [['all', '全部'], ['submitted', '待報價'], ['quoted', '已報價'], ['ended', '已結束']].map(([k, l]) => ({ label: l, on: () => this.setState({ quoteFilter: k }), ...chip(flt === k) })),
+        listEmpty: list.length === 0, emptyText: s.quotes.length ? '這個分類目前沒有報價' : '還沒有委託，有想買的日本商品嗎？', toNew: () => this.go('#/quote'),
+        list: list.map(({ q, st }) => { const m = QM[st]; const img = q.images && q.images[0]; const hl = q.offer ? Math.max(0, q.offer.expiresAt - now) : 0;
+          return { href: '#/quotes/' + q.id, name: q.name, hasImg: !!img, noImg: !img, img, meta: `${q.id} · ${fmtD(q.createdAt)} 送出 · ${q.qty} 件`, tag: tone(m.tone), icon: icon(m.icon, 14), label: m.label,
+            isQuoted: st === 'quoted', total: q.offer ? NT(q.offer.total1) : '', left: `剩餘 ${Math.floor(hl / H)} 小時 ${Math.floor(hl % H / MIN)} 分` }; })
+      }
+    };
+  }
+  vmQuoteDetail(now) {
+    const s = this.state, q = s.quotes.find(x => x.id === s.route.id); if (!q) return { ok: false, missing: true, tag: {} };
+    const st = this.qStatus(q, now), m = QM[st], o = q.offer;
+    const reqRows = [['商品連結', q.url || '—'], ['規格', q.spec || '—'], ['數量', `${q.qty} 件`], ['預算上限', q.budgetTWD ? NT(q.budgetTWD) : '未設定'], ['接受替代品', SUBS[q.substitute] || '—'], ['希望到貨', q.wantBy === 'date' ? q.date : WANTS[q.wantBy] || '—'], ['備註', q.note || '—'], ['送出時間', fmtMD(q.createdAt)]].map(([k, v]) => ({ k, v }));
+    let offerRows = [], expiry = '', c = null;
+    if (o) {
+      c = calc1([{ priceJPY: o.priceJPY, jpShippingJPY: o.jpShippingJPY, qty: q.qty }], o.rate);
+      offerRows = [['商品日幣價', `${JP(o.priceJPY)} × ${q.qty}`], ['匯率', `¥1 = NT$${o.rate}`], ['商品台幣價', NT(c.sub)], ['代購費（10%，最低 NT$50）', NT(c.fee)], ['日本國內運費', `${NT(c.jp)}（${JP(o.jpShippingJPY)}）`]].map(([k, v]) => ({ k, v }));
+      const left = o.expiresAt - now;
+      expiry = st === 'quoted' ? `報價有效期限剩餘 ${Math.floor(left / H)} 小時 ${Math.floor(left % H / MIN)} 分（${fmtMD(o.expiresAt)} 截止）` : st === 'expired' ? `報價已於 ${fmtMD(o.expiresAt)} 過期` : `有效期限 ${fmtMD(o.expiresAt)}`;
+    }
+    return {
+      ok: true, missing: false, id: q.id, name: q.name, tag: tone(m.tone), icon: icon(m.icon, 14), label: m.label,
+      reqOpen: s.reqOpen, reqExp: s.reqOpen ? 'true' : 'false', toggleReq: () => this.setState({ reqOpen: !s.reqOpen }), chevRot: s.reqOpen ? 'rotate(180deg)' : 'none',
+      hasImages: !!(q.images && q.images.length), images: (q.images || []).map((src, i) => ({ src, alt: `委託圖片 ${i + 1}` })), reqRows,
+      isSubmitted: st === 'submitted', isUnavailable: st === 'unavailable', unavailableReason: q.unavailableReason || '',
+      hasOffer: !!o, quotedAt: q.quotedAt ? fmtMD(q.quotedAt) + ' 報價' : '', offerRows, total1: o ? NT(c.total) : '', est2: o ? '≈ ' + NT(o.estimate2) : '',
+      expiry, expBg: st === 'quoted' ? 'var(--color-accent-900)' : 'var(--color-neutral-200)', expFg: st === 'quoted' ? 'var(--color-bg)' : 'var(--color-neutral-800)',
+      hasOfferNote: !!(o && o.note), offerNote: o ? o.note : '',
+      isQuoted: st === 'quoted', isAccepted: st === 'accepted', orderHref: '#/orders/' + (q.orderId || ''), isDeclined: st === 'declined', declineReason: q.declineReason ? `（${q.declineReason}）` : '',
+      canReask: st === 'expired' || st === 'declined' || st === 'unavailable', reask: () => this.reask(q),
+      accept: () => this.acceptQuote(q), decline: () => this.declineQuote(q)
+    };
+  }
+  ovm(o) {
+    const st = o.status, m = OM[st], exc = st === 'out_of_stock' || st === 'cancelled';
+    const idx = ORDER_FLOW.indexOf(exc ? (o.prevStatus || 'purchasing') : st);
+    const due = st === 'pending_payment_1' ? o.payment1.amount : st === 'pending_payment_2' ? o.payment2.amount : null;
+    return { id: o.id, href: '#/orders/' + o.id, date: fmtD(o.createdAt), thumbs: o.items.slice(0, 3).map(it => this.thumb(o, it, 22)), hasMore: o.items.length > 3, more: '+' + (o.items.length - 3),
+      count: `共 ${o.items.reduce((a, i) => a + i.qty, 0)} 件`, label: m.label, tagIcon: icon(m.icon, 14), tag: tone(m.tone), step: `${idx + 1}/9`, pct: ((idx + 1) / 9 * 100).toFixed(1) + '%',
+      actionTitle: st === 'out_of_stock' ? '缺貨待確認' : `${m.label} · ${NT(due || 0)}`, hasPay: due != null, noPay: due == null, pay: () => this.openPay(o.id) };
+  }
+  vmOrders() {
+    const s = this.state, f = s.orderFilter;
+    const isPay = o => o.status === 'pending_payment_1' || o.status === 'pending_payment_2';
+    const isTodo = o => isPay(o) || o.status === 'out_of_stock';
+    const isDone = o => o.status === 'completed' || o.status === 'cancelled';
+    const sorted = [...s.orders].sort((a, b) => b.createdAt - a.createdAt), payN = sorted.filter(isPay).length;
+    let todo = [], rest = [];
+    if (f === 'all') { todo = sorted.filter(isTodo); rest = sorted.filter(o => !isTodo(o)); }
+    else if (f === 'pay') todo = sorted.filter(isPay);
+    else if (f === 'active') rest = sorted.filter(o => !isDone(o) && !isPay(o));
+    else rest = sorted.filter(isDone);
+    return { ol: {
+      filters: [['all', '全部'], ['pay', '待付款'], ['active', '進行中'], ['done', '已完成']].map(([k, l]) => { const on = f === k; return { label: l, on: () => this.setState({ orderFilter: k }), pressed: on ? 'true' : 'false', bar: on ? 'var(--color-accent)' : 'transparent', fg: on ? 'var(--color-text)' : 'var(--color-neutral-700)', fw: on ? 700 : 400, hasBadge: k === 'pay' && payN > 0, badge: payN }; }),
+      hasTodo: todo.length > 0, todo: todo.map(o => this.ovm(o)), hasList: rest.length > 0, list: rest.map(o => this.ovm(o)),
+      empty: !todo.length && !rest.length, emptyTitle: s.orders.length ? '這個分類目前沒有訂單' : '還沒有訂單'
+    } };
+  }
+  vmOrderDetail(now) {
+    const s = this.state, o = s.orders.find(x => x.id === s.route.id); if (!o) return { ok: false, missing: true };
+    const st = o.status, m = OM[st], exc = st === 'out_of_stock' || st === 'cancelled';
+    const ci_ = ORDER_FLOW.indexOf(exc ? (o.prevStatus || 'purchasing') : st);
+    const last = o.history[o.history.length - 1];
+    const timeline = ORDER_FLOW.map((k, i) => {
+      const h = [...o.history].reverse().find(x => x.status === k);
+      const isDone = i < ci_ || (st === 'completed' && i === ci_), isCur = i === ci_ && st !== 'completed' && st !== 'cancelled', isTodo = !isDone && !isCur;
+      return { label: OM[k].label, isDone, isCur, isTodo, notLast: i < ORDER_FLOW.length - 1, lineColor: i < ci_ ? 'var(--color-accent-800)' : 'var(--color-neutral-300)',
+        fw: isCur ? 700 : 400, color: isTodo ? 'var(--color-neutral-600)' : 'var(--color-text)', hasTime: !!h && !isTodo, time: h ? fmtMD(h.at) + (h.note ? ' · ' + h.note : '') : '' };
+    });
+    let actionTitle = '', actionText = '', breakText = '', canPay = false, due = 0;
+    if (st === 'pending_payment_1') { actionTitle = '請完成一補付款'; due = o.payment1.amount; canPay = true; actionText = `一補 ${NT(due)} 包含商品費、代購費與日本國內運費，付款後立即開始代購。`; }
+    if (st === 'pending_payment_2') { actionTitle = '二補金額已確定'; due = o.payment2.amount; canPay = true; actionText = `二補金額 ${NT(due)} 已確定，請於 3 天內付款。`; const p = o.payment2; breakText = `實重 ${p.actualKg}kg → 以 ${p.billKg}kg 計 × NT$${CONFIG.intlPerKg} = ${NT(p.intl)}　＋ 台灣運費 ${NT(p.tw)}${p.tax ? '　＋ 關稅 ' + NT(p.tax) : ''}`; }
+    if (st === 'out_of_stock') { actionTitle = '缺貨處理中'; actionText = { refund: '部分商品缺貨，依你的選擇將全額退款，款項 3–5 個工作天內退回。', swap: '部分規格缺貨，代購者將透過 LINE 與你確認替換的規格。', wait: '商品暫時缺貨，我們會等待補貨最多 30 天，逾期自動退款。' }[o.oosPreference]; }
+    const p1 = o.payment1, pa2 = o.payment2, p2Known = pa2.amount != null;
+    const paidT = tone('tint'), unpaidT = tone('line'), estT = tone('muted');
+    const d = o.delivery, ct = o.contact;
+    const canConfirm = (st === 'shipped_tw' || st === 'completed') && !o.received;
+    return {
+      ok: true, missing: false, id: o.id, step: `${ci_ + 1}/9`, icon: icon(m.icon, 26), label: m.label, desc: m.desc, updated: fmtMD(last.at),
+      hasAction: !!actionTitle, actionTitle, actionText, hasBreak: !!breakText, breakText, canPay, due: NT(due), pay: () => this.openPay(o.id),
+      timeline,
+      items: o.items.map(it => ({ t: this.thumb(o, it, 22), name: it.name, meta: [it.variant, `× ${it.qty}`].filter(Boolean).join(' · '), yen: JP(it.priceJPY * it.qty) })),
+      p1: NT(p1.amount), p1State: p1.paid ? '已付' : '未付', p1Tag: p1.paid ? paidT : unpaidT,
+      p2Label: p2Known ? '二補（國際運費＋稅費＋台灣運費）' : '二補（預估，抵台秤重後確定）', p2: p2Known ? NT(pa2.amount) : '≈ ' + NT(pa2.estimate),
+      p2State: pa2.paid ? '已付' : p2Known ? '未付' : '預估', p2Tag: pa2.paid ? paidT : p2Known ? unpaidT : estT,
+      hasP2Detail: p2Known, p2Detail: p2Known ? `實重 ${pa2.actualKg}kg，以 ${pa2.billKg}kg 計費` : '',
+      totalLabel: p2Known ? '總計' : '預估總計', total: (p2Known ? '' : '≈ ') + NT(p1.amount + (p2Known ? pa2.amount : pa2.estimate)),
+      info: [['取貨方式', d.method === 'home' ? '宅配到府' : '超商店到店'], [d.method === 'home' ? '地址' : '門市', d.method === 'home' ? d.address : d.store], ['收件人', `${ct.name}${ct.phone ? ' · ' + ct.phone : ''}`], ['Email', ct.email || '—'], ['LINE ID', ct.line || '—'], ['缺貨處理', OOS[o.oosPreference] || '—'], ['下單時間', fmtMD(o.createdAt)], ['鎖定匯率', `¥1 = NT$${o.rate}`]].map(([k, v]) => ({ k, v })),
+      canConfirm: canConfirm && !canPay, confirm: () => { this.updOrder(o.id, x => { if (x.status !== 'completed') pushSt(x, 'completed', Date.now(), '客人確認收貨'); x.received = true; return x; }); this.toast('已確認收貨，謝謝你的訂購！'); }
+    };
+  }
+  vmInfo() {
+    const s = this.state, c = s.calc, set = o => this.setState(st => ({ calc: { ...st.calc, ...o } }));
+    const jpy = Math.max(0, Number(c.jpy) || 0), kg = Math.max(0, Number(c.kg) || 0);
+    const r1 = calc1(jpy ? [{ priceJPY: jpy, jpShippingJPY: 0, qty: c.qty }] : []), e2 = jpy ? intlFee(kg * c.qty) + twShip(c.method) : 0;
+    return {
+      calc: { v: c, on: { jpy: e => set({ jpy: e.target.value }), kg: e => set({ kg: e.target.value }) }, step: stepper(c.qty, 1, 99, n => set({ qty: n })),
+        presets: [['化妝水 約 0.4kg', 0.4], ['零食一包 約 0.2kg', 0.2], ['T 恤 約 0.3kg', 0.3]].map(([l, k]) => { const on = Number(c.kg) === k; return { label: l, on: () => set({ kg: String(k) }), bd: on ? 'var(--color-accent)' : 'var(--color-divider)', bg: on ? 'var(--color-accent-100)' : 'transparent' }; }),
+        methods: [['cvs', '超商店到店 NT$60'], ['home', '宅配 NT$100']].map(([k, l]) => ({ label: l, checked: c.method === k, on: () => set({ method: k }) })),
+        out: { p1: NT(r1.total), p2: '≈ ' + NT(e2), total: '≈ ' + NT(r1.total + e2), hasTax: r1.sub > CONFIG.taxFreeLimit,
+          note: jpy ? `一補＝商品 ${NT(r1.sub)}＋代購費 ${NT(r1.fee)}（未含日本運費）；二補＝${ceilHalf(kg * c.qty)}kg × NT$${CONFIG.intlPerKg}＋台灣運費 ${NT(twShip(c.method))}。實際金額以抵台秤重為準。` : '輸入日幣價格開始試算' } },
+      flowSteps: STEPS.map(([ic, l], i) => ({ n: '0' + (i + 1), icon: icon(ic, 22), label: l, bl: i ? '1px solid var(--color-divider)' : '0' })),
+      faqs: FAQS.map(([q, a], i) => { const open = s.faq === i; return { q, a, open, exp: open ? 'true' : 'false', rot: open ? 'rotate(180deg)' : 'none', on: () => this.setState({ faq: open ? -1 : i }) }; })
+    };
+  }
+  vmDemo(now) {
+    const s = this.state, rt = s.route.name, acts = []; let ctx = '進入「訂單詳情」或「報價單詳情」頁，可模擬代購者的更多操作。';
+    if (rt === 'orderDetail') {
+      const o = s.orders.find(x => x.id === s.route.id);
+      if (o) { const ended = o.status === 'completed' || o.status === 'cancelled'; ctx = `訂單 ${o.id} · 目前「${OM[o.status].label}」`;
+        acts.push({ label: '推進到下一個狀態', icon: icon('arrow', 16), dis: ended, on: () => this.advanceOrder(o.id) });
+        acts.push({ label: '模擬缺貨', icon: icon('alert', 16), dis: ended || ['out_of_stock', 'shipped_tw'].includes(o.status), on: () => this.simOOS(o.id) }); }
+    }
+    if (rt === 'quoteDetail') {
+      const q = s.quotes.find(x => x.id === s.route.id);
+      if (q) { const st = this.qStatus(q, now), can = st === 'submitted' || st === 'expired'; ctx = `報價 ${q.id} · 目前「${QM[st].label}」`;
+        acts.push({ label: '模擬代購者回覆報價', icon: icon('yen', 16), dis: !can, on: () => this.simQuote(q.id) });
+        acts.push({ label: '模擬無法代購', icon: icon('x', 16), dis: !can, on: () => this.simUnavailable(q.id) }); }
+    }
+    return { ctx, actions: acts };
+  }
+
+  renderVals() {
+    CONFIG.rate = this.props.rate ?? 0.215;
+    CONFIG.intlPerKg = this.props.intlPerKg ?? 220;
+    const s = this.state, now = s.now, rt = s.route.name;
+    const ic = {}; Object.keys(ICONS).forEach(n => { ic[n] = icon(n, 20); ic[n + '16'] = icon(n, 16); }); ic.check12 = icon('check', 12, 2.2);
+    const r = {}; ['home', 'product', 'cart', 'checkout', 'success', 'quote', 'quoteDetail', 'orders', 'orderDetail', 'info'].forEach(k => r[k] = rt === k);
+    const pushed = ['product', 'cart', 'checkout', 'quoteDetail', 'orderDetail'].includes(rt);
+    const titles = { product: '商品詳情', cart: '購物車', checkout: '結帳', quoteDetail: '報價單詳情', orderDetail: '訂單詳情' };
+
+    const pd = r.product ? this.vmProduct(now) : { ok: false, step: {} };
+    const cart = r.cart ? this.vmCart(now) : { sum: {} };
+    const co = r.checkout ? this.vmCheckout(now) : { v: {}, on: {}, err: {}, bd: {}, fee: {} };
+    const qd = r.quoteDetail ? this.vmQuoteDetail(now) : { tag: {} };
+    const od = r.orderDetail ? this.vmOrderDetail(now) : {};
+    let sc = { ok: false };
+    if (r.success) { const o = s.orders.find(x => x.id === s.route.id); if (o) sc = { ok: true, id: o.id, amount: NT(o.payment1.amount), est2: '≈ ' + NT(o.payment2.estimate), href: '#/orders/' + o.id }; }
+
+    const hasBar = (r.product && pd.ok) || (r.cart && cart.has) || (r.checkout && co.ok) || (r.orderDetail && od.ok) || (r.quoteDetail && qd.isQuoted);
+    const showNav = !pushed && !r.success;
+    const base = hasBar ? 76 : showNav ? 62 : 0;
+
+    const cartN = s.cart.reduce((a, c) => a + c.qty, 0);
+    const payN = s.orders.filter(o => o.status === 'pending_payment_1' || o.status === 'pending_payment_2').length;
+    const quotedN = s.quotes.filter(q => this.qStatus(q, now) === 'quoted').length;
+    const tabOf = { home: 'shop', product: 'shop', cart: 'shop', checkout: 'shop', success: 'shop', quote: 'quote', quoteDetail: 'quote', orders: 'orders', orderDetail: 'orders', info: 'info' }[rt];
+    const tabs = [['shop', '逛商品', 'bag', '#/', 0], ['quote', '委託報價', 'msg', '#/quote', quotedN], ['orders', '我的訂單', 'package', '#/orders', payN], ['info', '須知', 'book', '#/info', 0]].map(([k, l, i, h, b]) => { const on = tabOf === k; return { label: l, href: h, icon: icon(i, 22), cur: on ? 'page' : 'false', color: on ? 'var(--color-accent-800)' : 'var(--color-neutral-700)', fw: on ? 700 : 400, bar: on ? 'var(--color-accent)' : 'transparent', hasBadge: b > 0, badge: b }; });
+
+    const sh = s.sheet; let sheet = { pay: false, terms: false, close: () => this.setState({ sheet: null }) };
+    if (sh && sh.type === 'pay') { const o = s.orders.find(x => x.id === sh.orderId); if (o) { const two = o.status === 'pending_payment_2';
+      sheet = { ...sheet, pay: true, label: two ? '二補' : '一補', orderId: o.id, amount: NT(two ? o.payment2.amount : o.payment1.amount), last5: sh.last5, err: sh.err, bd: sh.err ? 'var(--color-text)' : 'var(--color-divider)', loading: sh.loading,
+        onLast5: e => this.setState({ sheet: { ...this.state.sheet, last5: e.target.value.replace(/\D/g, '').slice(0, 5), err: '' } }), submit: () => this.submitPay() }; } }
+    if (sh && sh.type === 'terms') sheet = { ...sheet, terms: true, agree: () => { this.setState({ sheet: null }); this.setCo('agree', true); } };
+
+    const dg = s.dialog;
+    const dlg = dg ? { show: true, title: dg.title, body: dg.body, okLabel: dg.okLabel, hasReasons: !!dg.reasons, okDis: !!(dg.needReason && !dg.reason),
+      reasons: (dg.reasons || []).map(x => ({ label: x, checked: dg.reason === x, on: () => this.setState({ dialog: { ...this.state.dialog, reason: x } }) })),
+      cancel: () => this.setState({ dialog: null }), ok: () => { const d = this.state.dialog; this.setState({ dialog: null }); d.onOk(d.reason); } } : { show: false };
+
+    const demo = { ...this.vmDemo(now), open: s.demoOpen, exp: s.demoOpen ? 'true' : 'false', toggle: () => this.setState({ demoOpen: !this.state.demoOpen }), reset: () => this.resetAll(), panelBottom: (base + 72) + 'px' };
+
+    return {
+      ic, r, isPushed: pushed, notPushed: !pushed, pageTitle: titles[rt] || '', goBack: () => { if (history.length > 1) history.back(); else this.go('#/'); },
+      rateLabel: `今日 ¥1 = NT$${CONFIG.rate}`,
+      cartBadge: cartN > 0 ? React.createElement('span', { key: 'b' + s.bump, style: { position: 'absolute', top: 4, right: 0, minWidth: 18, height: 18, padding: '0 4px', background: 'var(--color-accent-900)', color: 'var(--color-bg)', fontSize: 11, fontWeight: 700, display: 'grid', placeItems: 'center', fontFamily: 'Barlow, sans-serif', animation: s.bump ? 'hyBump 420ms ease-out' : 'none' } }, cartN) : null,
+      padBottom: (base + 28) + 'px', showNav, tabs, fabBottom: (base + 14) + 'px', toastBottom: (base + 70) + 'px',
+      ...(r.home ? this.vmHome(now) : {}), pd, cart, co, qd, od, sc, ...(r.quote ? this.vmQuote(now) : { q: {}, qTabs: [] }), ...(r.orders ? this.vmOrders() : { ol: {} }), ...this.vmInfo(),
+      fileRef: this.fileRef, bank: CONFIG.bank, lineUrl: CONFIG.lineUrl, igUrl: CONFIG.igUrl,
+      spinner: React.createElement('span', { style: { width: 16, height: 16, border: '2px solid currentColor', borderRightColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'hySpin 600ms linear infinite' } }),
+      checkAnim: React.createElement('svg', { width: 88, height: 88, viewBox: '0 0 88 88', fill: 'none', stroke: 'var(--color-accent)', strokeWidth: 2, strokeLinecap: 'square', 'aria-hidden': true },
+        React.createElement('rect', { x: 4, y: 4, width: 80, height: 80, strokeDasharray: 320, strokeDashoffset: 320, style: { animation: 'hyDraw 600ms ease-out forwards' } }),
+        React.createElement('path', { d: 'M26 45l12 12 24-26', strokeWidth: 3, strokeDasharray: 60, strokeDashoffset: 60, style: { animation: 'hyDraw 360ms 480ms ease-out forwards' } })),
+      pulseDot: React.createElement('span', { style: { width: 18, height: 18, marginTop: 2, border: '2px solid var(--color-accent)', background: 'var(--color-accent-200)', position: 'relative', display: 'block', animation: 'hyPulse 1.8s ease-out infinite' } }),
+      showDemo: this.props.showDemo ?? true, demo, sheet, dlg, stop: e => e.stopPropagation(),
+      toast: s.toast ? { show: true, msg: s.toast.msg, hasUndo: !!s.toast.undo, undo: s.toast.undo } : { show: false }
+    };
+  }
+}
+</script>
+</body>
+</html>
