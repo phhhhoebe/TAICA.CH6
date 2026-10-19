@@ -27,15 +27,7 @@
 一補（下單時付款）：商品金額＋代購費（10%，最低 NT$50）＋日本國內運費
 二補（抵台後付款）：國際運費（依重量）＋台灣運費＋關稅（商品金額超過 NT$2,000 時可能產生）
 檔案結構
-├── index.html          # 主頁面
-├── support.js          # 頁面互動與資料邏輯
-├── _ds/                # Claude Design 設計系統（樣式與元件）
-│   └── industry-…/
-│       ├── styles.css
-│       ├── _ds_bundle.js
-│       └── _ds_manifest.json
-├── .nojekyll           # 讓 GitHub Pages 正確載入底線開頭的檔案
-└── 日本代購 Web App 規格書.pdf
+
 部署注意事項
 本專案透過 GitHub Pages 部署（Settings → Pages → main / root）。
 _ds 資料夾的結構需維持原樣，index.html 依此路徑載入設計系統。
